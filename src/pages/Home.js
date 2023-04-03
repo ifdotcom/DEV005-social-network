@@ -12,8 +12,6 @@ const Home = () => {
    </div>
    </div>
     `;
-
   return viewHome;
 };
-
 export default Home;
