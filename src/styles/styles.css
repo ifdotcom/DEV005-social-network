@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Oswald:wght@200&display=swap');
+
+:root {
+--font-titles: 'Bubblegum Sans';
+--font-paragraph: 'Oswald';
+}
+
+body {
+    font-family: var(--font-titles);
+}
+
+#btn-login{
+    width: 200px;
+height: 50px;
+background: yellow;
+position: absolute;
+top: 0;
+}
+#btn-register{
+    height: 50px;
+    background: blue;
+    position: relative;
+}
+footer{
+    background: rgba(175, 255, 254, 0.8);
+    border-radius: 25px 25px 0px 0px;
+}
+footer a{
+    color: inherit;
+}
