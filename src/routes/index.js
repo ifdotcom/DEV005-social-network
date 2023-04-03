@@ -1,9 +1,9 @@
-import Error404 from "../pages/Error404";
+import Error404 from '../pages/Error404';
 import Home from '../pages/Home';
-import Footer from "../templates/Footer";
+import Footer from '../templates/Footer';
 
 const routes = {
-  "/": Home,
+  '/': Home,
 };
 
 const router = async () => {
@@ -12,8 +12,6 @@ const router = async () => {
 
   home.innerHTML = await Home();
   footer.innerHTML = await Footer();
-
-
 };
 
 export default router;
