@@ -5,11 +5,9 @@ const Home = () => {
     <img id="logo-title" src= "./img/tittle.png" alt="Frikis del Espacio"/>
   </div>
   
-   <div id="btn-register">
-   <button>Registro</button>
-   <div id="btn-login">
-   <button>Iniciar Sesión</button>
-   </div>
+   <div id="btns">
+   <button id="btn-login">Iniciar Sesión</button>
+   <button id="btn-register">Registro</button>
    </div>
     `;
   return viewHome;
