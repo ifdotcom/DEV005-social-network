@@ -1,8 +1,8 @@
 const Home = () => {
   const viewHome = `
   <div class="container">
-    <img id="logo" src= "./img/vaca1_480.png" alt="Imagen del logo "/>
-    <img id="logo-title" src= "./img/tittle.png" alt="Frikis del Espacio"/>
+    <h1 id="letraLogo">Frikis del Espacio</h1>
+    <img id="logo" src= "./img/vaca1_480.png" alt="Imagen del logo "/>  
   </div>
   
    <div id="btns">
