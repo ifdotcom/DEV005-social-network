@@ -14,6 +14,9 @@
 }
 body {
   background-image: url(/img/background.jpg);
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
 }
 .container {
   display: flex;
@@ -51,6 +54,7 @@ body {
   font-family: var(--font-secondary);
   font-weight: var(--font-w700);
   color: var(--color-ligth);
+  font-size: 2.7vh;
 }
 #btn-login {
   background: var(--color-btn-primary);
@@ -59,13 +63,15 @@ body {
   background: var(--color-btn-secondary);
 }
 footer {
-  background: rgba(175, 255, 254, 0.8);
+  background: #6B417C;
   border-radius: 25px 25px 0px 0px;
   text-align: center;
-  color: rgb(113, 16, 137);
-  font-size: 2.5vh;
-  padding: 1.1%;
+  color: rgba(255, 255, 255, 0.716);
+  font-size: 1em;
+  padding: .5% .5%;
+  font-family: var(--font-secondary);
 }
 footer a {
   color: inherit;
+  cursor: pointer;
 }
