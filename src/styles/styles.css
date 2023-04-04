@@ -21,7 +21,6 @@ body {
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
 */
-
 @media (min-width: 1281px) {
   .container {
     display: inline-flex;
@@ -69,6 +68,7 @@ body {
   font-weight: var(--font-w700);
   font-size: 21px;
   color: var(--color-ligth);
+  font-size: 2.7vh;
 }
 #btn-login {
   background: var(--color-btn-primary);
@@ -77,18 +77,18 @@ body {
   background: var(--color-btn-secondary);
 }
 footer {
-  background: rgba(175, 255, 254, 0.8);
+  background: #6B417C;
   border-radius: 25px 25px 0px 0px;
   text-align: center;
-  color: rgb(113, 16, 137);
-  font-size: 2.5vh;
-  padding: 1.1%;
+  color: rgba(255, 255, 255, 0.716);
+  font-size: 1em;
+  padding: .5% .5%;
+  font-family: var(--font-secondary);
 }
 footer a {
   color: inherit;
 }  
 }
-
 /* 
   ##Device = Most of the Smartphones Mobiles (Portrait)
   ##Screen = B/w 320px to 479px
@@ -157,5 +157,6 @@ footer a {
   }
   footer a {
     color: inherit;
+    cursor: pointer;
   } 
 }
