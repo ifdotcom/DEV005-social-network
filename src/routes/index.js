@@ -8,26 +8,24 @@ import Login from '../pages/Login';
 //   '/': Home,
 //   '/#login': Login,
 //   '/#register': Register,
-
 // };
-
 const router = () => {
-  const home = document.getElementById('home');
-  const login = document.getElementById('login');
-  const register = document.getElementById('register');
+  const root = document.getElementById('root');
   const footer = document.getElementById('footer');
 
-  footer.innerHTML = Footer();
+  root.innerHTML = null;
 
-  const { hash } = window.location;
-  console.log(hash);
-  if (!hash || hash === '/#') {
-    home.innerHTML = Home();
-  } else if (hash === '/#login') {
-    login.innerHTML = Login();
-  } else if (hash === '/#register') {
-    register.innerHTML = Register();
+  
+  const { hash } = location;
+
+  if (!hash || hash === '#/') {
+    root.innerHTML = Home();
+  } else if (hash === '#/login') {
+    root.innerHTML = Login();
+  } else if (hash === '#/register') {
+    root.innerHTML = Register();
   }
+  footer.innerHTML = Footer();
 };
 
 export default router;
