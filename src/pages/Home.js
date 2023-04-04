@@ -7,7 +7,7 @@ const Home = () => {
   
    <div id="btns">
    <button id="btn-login">Iniciar Sesión</button>
-   <button id="btn-register">Registro</button>
+   <button id="btn-register">Registrarse</button>
    </div>
     `;
   return viewHome;
