@@ -16,6 +16,9 @@ body {
   background-image: url(/img/imgFondo.jpg);
   background-position: center;
   position: relative;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: 1fr auto;
 }
 /* 
 Estilos para el celular
@@ -73,12 +76,13 @@ Estilos para el celular
     background: var(--color-btn-secondary);
   }
   footer {
-    background: rgba(175, 255, 254, 0.8);
+    background: #6B417C;
     border-radius: 25px 25px 0px 0px;
     text-align: center;
-    color: rgb(113, 16, 137);
-    font-size: 2.5vh;
-    padding: 1.1%;
+    color: rgba(255, 255, 255, 0.716);
+    font-size: 1em;
+    padding: 1% 1%;
+    font-family: var(--font-secondary);
   }
   footer a {
     color: inherit;
@@ -141,17 +145,5 @@ Estilos para el celular
 }
 #btn-register {
   background: var(--color-btn-secondary);
-}
-footer {
-  background: #6B417C;
-  border-radius: 25px 25px 0px 0px;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.716);
-  font-size: 1em;
-  padding: .5% .5%;
-  font-family: var(--font-secondary);
-}
-footer a {
-  color: inherit;
-}  
+} 
 }
