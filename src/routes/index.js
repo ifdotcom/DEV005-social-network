@@ -4,28 +4,27 @@ import Footer from '../templates/Footer';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 
-// const routes = {
-//   '/': Home,
-//   '/#login': Login,
-//   '/#register': Register,
-// };
-const router = () => {
-  const root = document.getElementById('root');
-  const footer = document.getElementById('footer');
+const root = document.getElementById('root');
+const footer = document.getElementById('footer');
 
-  root.innerHTML = null;
-
-  
-  const { hash } = location;
-
+const navigateTo = (hash) => {
   if (!hash || hash === '#/') {
-    root.innerHTML = Home();
+    Home(navigateTo);
+    window.location.hash = hash;
   } else if (hash === '#/login') {
     root.innerHTML = Login();
   } else if (hash === '#/register') {
     root.innerHTML = Register();
   }
   footer.innerHTML = Footer();
+  window.history.pushState({}, hash, window.location.origin + hash);
+};
+
+const router = () => {
+  root.innerHTML = null;
+
+  const { hash } = window.location;
+  navigateTo(hash);
 };
 
 export default router;
