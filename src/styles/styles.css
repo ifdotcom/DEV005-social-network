@@ -15,6 +15,8 @@
 body {
   background-image: url(/img/imgFondo.jpg);
   background-position: center;
+  background-size: 100% 100%;
+  background-attachment: fixed;
   position: relative;
   display: grid;
   min-height: 100vh;
@@ -94,66 +96,10 @@ Estilos para el celular
     background: var(--color-btn-secondary);
   }
 /* 
-  ##Device = Desktops
-  ##Screen = 1281px to higher resolution desktops
-*/
-@media (min-width: 1281px) {
-  .container {
-    display: inline-flex;
-    flex-direction: row-reverse;
-    margin-top: 5%;
-    width: 100%;
-}
-#tittleLogo{
-  font-family: var(--font-primary);
-  font-size: 531%;
-  color: #fff;
-  text-align: center;
-  width: 100%;
-  height: 26%;
-  text-shadow: 5px -5px 10px #8BB3EF;
-}
-#logo {
-  width: 100%;
-}
-#btns {
-  width: 100%;
-  height: 200px;
-  border-radius: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-}
-#btn-login,
-#btn-register {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 51px;
-  width: 260px;
-  height: 75px;
-  box-shadow: inset 0px -9px 8px rgba(0, 0, 0, 0.69);
-  border: none;
-  border-radius: 12px;
-  font-family: var(--font-secondary);
-  font-weight: var(--font-w700);
-  font-size: 21px;
-  color: var(--color-ligth);
-  font-size: 2.7vh;
-}
-#btn-login {
-  background: var(--color-btn-primary);
-}
-#btn-register {
-  background: var(--color-btn-secondary);
-} 
-}
-/* 
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media (min-width: 1025px) {
   main{
     margin: 0;
   }
@@ -175,14 +121,25 @@ Estilos para el celular
     grid-area: header;
     margin-right: 15%;
     margin-top: 5%;
+    font-size: 390%;
   }
   #btns{
     grid-area: sidebar;
     width: 50%;
     margin-right: 15%;
-    gap: 35px
+    gap: 35px;
+    transform: scale(0.8);
   }
   footer{
     padding: 1% 1%;
+  }
+}
+
+@media (min-width: 1920px) {
+  #tittleLogo{
+    font-size: 500%;
+  }
+  #btns{
+    transform: scale(1);
   }
 }
