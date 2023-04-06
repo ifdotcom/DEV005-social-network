@@ -2,7 +2,7 @@ import Error404 from '../pages/Error404';
 import Home from '../pages/Home';
 import Footer from '../templates/Footer';
 import Register from '../pages/Register';
-import Login from '../pages/Login';
+import Login from '../pages/login';
 
 const root = document.getElementById('root');
 const footer = document.getElementById('footer');
@@ -10,12 +10,14 @@ const footer = document.getElementById('footer');
 const navigateTo = (hash) => {
   if (!hash || hash === '#/') {
     Home(navigateTo);
-    window.location.hash = hash;
   } else if (hash === '#/login') {
     root.innerHTML = Login();
   } else if (hash === '#/register') {
     root.innerHTML = Register();
+  } else {
+    Error404(navigateTo);
   }
+
   footer.innerHTML = Footer();
   window.history.pushState({}, hash, window.location.origin + hash);
 };
