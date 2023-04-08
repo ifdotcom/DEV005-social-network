@@ -13,11 +13,11 @@ const Home = (navigateTo) => {
   const btnLogin = document.getElementById('btn-login');
 
   btnLogin.addEventListener('click', () => {
-    navigateTo('#/login');
+    navigateTo('/login');
   });
   const btnRegister = document.getElementById('btn-register');
   btnRegister.addEventListener('click', () => {
-    navigateTo('#/register');
+    navigateTo('/register');
   });
   return viewHome;
 };
