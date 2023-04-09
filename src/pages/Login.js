@@ -1,3 +1,5 @@
+import validationForm from '../utils/FormValidation';
+
 const Login = () => {
   const viewLogin = `
       <div id="container-logo">
@@ -14,11 +16,11 @@ const Login = () => {
         <span id="bar-text">O</span>
         <div id="bar-right"></div>
       </div>
-      <form action="">
+      <form action="" id="form-login">
         <label for="mail">Correo electrónico</label>
-        <input class="btn" type="email" id="mail" name="user_mail" />
+        <input class="btn" type="email" id="mail" name="user_mail" title="El email es incorrecto" required/>
         <label for="password">Contraseña</label>
-        <input class="btn" type="password" id="password" name="user_password" />
+        <input class="btn" type="password" id="password" name="user_password" required/>
         <button id="button-login" type="submit">Iniciar Sesión</button>
         <div id="links">
           <a href="#" id="forgot-pwd">¿Olvidaste tu contraseña?</a>
@@ -26,6 +28,11 @@ const Login = () => {
         </div>
       </form>
       `;
+
+  const root = document.getElementById('root');
+  root.innerHTML = viewLogin;
+
+  validationForm();
   return viewLogin;
 };
 export default Login;
