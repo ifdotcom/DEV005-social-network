@@ -18,7 +18,7 @@ const navigateTo = (hash) => {
     Error404(navigateTo);
   }
 
-  footer.innerHTML = Footer();
+  // footer.innerHTML = Footer();
   window.history.pushState({}, hash, window.location.origin + hash);
 };
 
