@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import Footer from '../templates/Footer';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
+import Dashboard from '../pages/Dashboard';
 
 const root = document.getElementById('root');
 const footer = document.getElementById('footer');
@@ -13,9 +14,11 @@ const navigateTo = (hash) => {
   if (!hash || hash === '/') {
     Home(navigateTo);
   } else if (hash === '/login') {
-    root.innerHTML = Login();
+    Login();
   } else if (hash === '/register') {
     root.innerHTML = Register();
+  } else if (hash === '/dashboard') {
+    Dashboard();
   } else {
     Error404();
   }

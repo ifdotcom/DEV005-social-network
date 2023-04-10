@@ -1,4 +1,6 @@
-import validationForm from '../utils/FormValidation';
+// import validationForm from '../utils/FormValidation';
+
+import { buttonLoginG } from '../lib/LoginGoogle';
 
 const Login = () => {
   const viewLogin = `
@@ -31,8 +33,11 @@ const Login = () => {
 
   const root = document.getElementById('root');
   root.innerHTML = viewLogin;
+  const btnGoogle = document.getElementById('button-google');
 
-  validationForm();
+  buttonLoginG(btnGoogle);
+
+  // validationForm();
   return viewLogin;
 };
 export default Login;
