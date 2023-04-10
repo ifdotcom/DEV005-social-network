@@ -44,9 +44,7 @@ footer img {
   width: 2vh;
   filter: brightness(5);
 }
-/* 
-Estilos para el celular
-*/
+/* ---------------Estilos para el celular------------------*/
   main {
     margin-top: 5%;
   }
@@ -100,6 +98,8 @@ Estilos para el celular
   #btn-register {
     background: var(--color-btn-secondary);
   }
+  
+  /* 
   /* Inicio de sesión */
 form {
   display: flex;
@@ -124,7 +124,6 @@ form {
   text-shadow: 5px -5px 20px #8bb3ef;
   text-align: center;
 }
-
 .btn {
   width: 374px;
   height: 68px;
@@ -141,7 +140,6 @@ form {
   align-items: center;
   gap: 17px;
 }
-
 #button-google {
   margin-top: 60px;
   cursor: pointer;
@@ -383,6 +381,35 @@ color: var(--color-btn-primary) ;
   font-weight: bold;
   cursor: pointer;
 }
+/*--------- error 404 -----------*/
+  #pageNotFoundText {
+    color: #fff;
+    font-family: var(--font-primary);
+    font-size: 30px;
+    margin-top: 5%;
+}
+  #alien{
+    width: 80%;
+    margin-top: 25%;
+  }
+  #alien2{
+    width: 95%;
+  }
+  #cawRocket{
+    width: 20%;
+    margin-top: 20px;
+  }
+  section>article{
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+  #boxCointaing404{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    row-gap: 121px;
+  }
 /* 
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
@@ -492,4 +519,22 @@ color: var(--color-btn-primary) ;
   #btns {
     transform: scale(1);
   }
+  #boxCointaing404{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 816px;
+    row-gap: 6px;
+  }
+  #alien{
+    width: 60%;
+    margin-top: 15%;
+  }
+  #pageNotFoundText {
+    color: #fff;
+    font-family: var(--font-primary);
+    font-size: 50px;
+    margin-top: 5%;
+}
 }

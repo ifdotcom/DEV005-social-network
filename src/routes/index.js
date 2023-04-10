@@ -22,7 +22,6 @@ const navigateTo = (hash) => {
   } else {
     Error404();
   }
-
   footer.innerHTML = Footer();
 };
 
