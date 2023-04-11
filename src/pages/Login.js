@@ -1,6 +1,6 @@
 // import validationForm from '../utils/FormValidation';
 
-import { buttonLoginG } from '../lib/LoginGoogle';
+import { buttonLoginG } from "../lib/LoginGoogle";
 
 const Login = () => {
   const viewLogin = `
@@ -26,14 +26,14 @@ const Login = () => {
         <button id="button-login" type="submit">Iniciar Sesión</button>
         <div id="links">
           <a href="#" id="forgot-pwd">¿Olvidaste tu contraseña?</a>
-          <p id="create-account">¿No tienes un cuenta? <a href="#">Crea una</a></span></p>
+          <p id="create-account">¿No tienes un cuenta? <a href="/register">Crea una</a></span></p>
         </div>
       </form>
       `;
 
-  const root = document.getElementById('root');
+  const root = document.getElementById("root");
   root.innerHTML = viewLogin;
-  const btnGoogle = document.getElementById('button-google');
+  const btnGoogle = document.getElementById("button-google");
 
   buttonLoginG(btnGoogle);
 

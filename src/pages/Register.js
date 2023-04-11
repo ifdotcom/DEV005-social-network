@@ -21,10 +21,12 @@ const Register = () => {
           <p class=input-error>*Contraseña [5-10] caracteres. </p>
           <button class="btnRegister">Registrarse</button>
         </form>
-        <p class="go-login">¿Ya tienes una cuenta? <a href="#/login">Inicia Sesión</a></p>
+        <p class="go-login">¿Ya tienes una cuenta? <a href="/login">Inicia Sesión</a></p>
       </div>
     </div>
     `;
+  const root = document.getElementById("root");
+  root.innerHTML = viewRegister;
   return viewRegister;
 };
 export default Register;
