@@ -7,17 +7,17 @@ const Home = (navigateTo) => {
       <button id="btn-register">Registrarse</button>
     </div>
     `;
-  const root = document.getElementById("root");
+  const root = document.getElementById('root');
   root.innerHTML = viewHome;
 
-  const btnLogin = document.getElementById("btn-login");
+  const btnLogin = document.getElementById('btn-login');
 
-  btnLogin.addEventListener("click", () => {
-    navigateTo("/login");
+  btnLogin.addEventListener('click', () => {
+    navigateTo('/login');
   });
-  const btnRegister = document.getElementById("btn-register");
-  btnRegister.addEventListener("click", () => {
-    navigateTo("/register");
+  const btnRegister = document.getElementById('btn-register');
+  btnRegister.addEventListener('click', () => {
+    navigateTo('/register');
   });
   return viewHome;
 };

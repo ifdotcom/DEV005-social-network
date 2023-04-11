@@ -1,12 +1,12 @@
-import Error404 from "../pages/Error404";
-import Home from "../pages/Home";
-import Footer from "../templates/Footer";
-import Register from "../pages/Register";
-import Login from "../pages/Login";
-import Dashboard from "../pages/Dashboard";
+import Error404 from '../pages/Error404';
+import Home from '../pages/Home';
+import Footer from '../templates/Footer';
+import Register from '../pages/Register';
+import Login from '../pages/Login';
+import Dashboard from '../pages/Dashboard';
 
-const root = document.getElementById("root");
-const footer = document.getElementById("footer");
+const root = document.getElementById('root');
+const footer = document.getElementById('footer');
 // const parseLocation = () =>
 //   window.location.pathname.slice(1).toLowerCase() || "/";
 
@@ -38,28 +38,29 @@ const footer = document.getElementById("footer");
 // };
 
 const routes = [
-  { path: "/", component: Home },
-  { path: "/login", component: Login },
-  { path: "/register", component: Register },
-  { path: "/error", component: Error404 },
+  { path: '/', component: Home },
+  { path: '/login', component: Login },
+  { path: '/register', component: Register },
+  { path: '/error', component: Error404 },
+  { path: '/dashboard', component: Dashboard },
 ];
 
-const defaultRoute = "/";
+const defaultRoute = '/';
 
-function navigateTo(hash) {
+export function navigateTo(hash) {
   const route = routes.find((routeFind) => routeFind.path === hash);
 
   if (route && route.component) {
     window.history.pushState(
       {},
       route.path,
-      window.location.origin + route.path
+      window.location.origin + route.path,
     );
     if (root) {
       route.component(navigateTo);
     }
   } else {
-    navigateTo("/error");
+    navigateTo('/error');
   }
   footer.innerHTML = Footer();
 }
@@ -69,6 +70,12 @@ const router = () => {
     navigateTo(window.location.pathname);
   };
   navigateTo(window.location.pathname || defaultRoute);
+};
+
+export const getCredentials = (credentials) => {
+  if (credentials) {
+    navigateTo('/dashboard');
+  }
 };
 
 export default router;
