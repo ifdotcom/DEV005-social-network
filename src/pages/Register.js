@@ -1,3 +1,5 @@
+import { buttonLoginG } from "../lib/LoginGoogle";
+
 const Register = () => {
   const viewRegister = `
   <h1 id="tittleLogo-2">Frikis del Espacio</h1>
@@ -25,8 +27,10 @@ const Register = () => {
       </div>
     </div>
     `;
-  const root = document.getElementById("root");
+  const root = document.getElementById('root');
   root.innerHTML = viewRegister;
+  const btnGoogle = document.querySelector('.btnG');
+  buttonLoginG(btnGoogle);
   return viewRegister;
 };
 export default Register;

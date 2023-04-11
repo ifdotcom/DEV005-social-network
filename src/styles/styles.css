@@ -507,6 +507,28 @@ color: var(--color-btn-primary) ;
   .go-login{
     font-size: .8em;
   }
+    /* -----------Pag Error---------------- */
+    #alien {
+      width: 60%;
+      margin-top: 25%;
+  }
+  #pageNotFoundText {
+    color: #fff;
+    font-family: var(--font-primary);
+    font-size: 40px;
+    margin-top: 5%;
+  }
+  #alien2 {
+    width: 95%;
+  }
+  #boxCointaing404 {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    margin-top: 630px;
+  }
+
   footer{
     padding: 1% 1%;
   }
