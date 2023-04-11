@@ -1,11 +1,11 @@
-import { app } from './lib/firebase';
-import './lib/LoginGoogle';
+import { app } from "./lib/firebase";
+import "./lib/LoginGoogle";
 
-import router from './routes';
+import router from "./routes";
 
 // Este es el punto de entrada de tu aplicacion
-window.addEventListener('load', router);
+window.addEventListener("load", router);
 
 // Detectamos cambio del hash
 
-window.addEventListener('hashchange', router);
+// window.addEventListener("DOMContentLoaded", router);
