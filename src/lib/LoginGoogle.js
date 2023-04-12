@@ -1,16 +1,38 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { getCredentials } from '../routes/index';
+import {
+  signOut, getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged,
+} from 'firebase/auth';
+// import { async } from 'regenerator-runtime';
+// import { getCredential } from '../utils/GetCredential.js';
 
-export const buttonLoginG = (button) => {
+const auth = getAuth();
+export const buttonLoginG = (button, navigateTo) => {
   button.addEventListener('click', async () => {
     const provider = new GoogleAuthProvider();
-    const auth = getAuth();
     try {
       const credentials = await signInWithPopup(auth, provider);
-      getCredentials(credentials);
-      console.log(credentials); //eslint-disable-line
+      // getCredential(credentials);
+      if (credentials) {
+        console.log(credentials); //eslint-disable-line  
+        navigateTo('/dashboard');
+      }
     } catch (error) {
       console.log(error); //eslint-disable-line
     }
+  });
+};
+
+onAuthStateChanged(auth, (user) => {
+  console.log(user);
+});
+
+export const buttonSignOut = (button, navigateTo) => {
+  button.addEventListener('click', async () => {
+    // const auth = getAuth();
+    signOut(auth).then(() => {
+      navigateTo('/');
+      console.log('se cerró la sesión');// Sign-out successful.
+    }).catch((error) => {
+      console.log(error); //eslint-disable-line
+    });
   });
 };

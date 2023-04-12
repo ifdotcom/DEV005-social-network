@@ -1,6 +1,6 @@
-import { buttonLoginG } from "../lib/LoginGoogle";
+import { buttonLoginG } from '../lib/LoginGoogle';
 
-const Register = () => {
+const Register = (navigateTo) => {
   const viewRegister = `
   <h1 id="tittleLogo-2">Frikis del Espacio</h1>
   <img id="logo-2" src= "./img/vaca1_480.png" alt="Imagen del logo"/>  
@@ -30,7 +30,7 @@ const Register = () => {
   const root = document.getElementById('root');
   root.innerHTML = viewRegister;
   const btnGoogle = document.querySelector('.btnG');
-  buttonLoginG(btnGoogle);
+  buttonLoginG(btnGoogle, navigateTo);
   return viewRegister;
 };
 export default Register;
