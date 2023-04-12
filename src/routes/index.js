@@ -1,41 +1,12 @@
-import Error404 from '../pages/Error404';
-import Home from '../pages/Home';
-import Footer from '../templates/Footer';
-import Register from '../pages/Register';
-import Login from '../pages/Login';
-import Dashboard from '../pages/Dashboard';
+import Error404 from '../pages/Error404.js';
+import Home from '../pages/Home.js';
+import Footer from '../templates/Footer.js';
+import Register from '../pages/Register.js';
+import Login from '../pages/Login.js';
+import Dashboard from '../pages/Dashboard.js';
 
 const root = document.getElementById('root');
 const footer = document.getElementById('footer');
-// const parseLocation = () =>
-//   window.location.pathname.slice(1).toLowerCase() || "/";
-
-// const navigateTo = (hash) => {
-//   if (!hash || hash === "/") {
-//     Home(navigateTo);
-//   } else if (hash === "/login" || hash === "login") {
-//     Login();
-//   } else if (hash === "/register" || hash === "register") {
-//     root.innerHTML = Register();
-//   } else if (hash === "/dashboard" || hash === "login") {
-//     Dashboard();
-//   } else {
-//     Error404();
-//   }
-//   window.history.pushState({}, hash, window.location.origin + hash);
-
-//   footer.innerHTML = Footer();
-// };
-
-// const router = () => {
-//   root.innerHTML = null;
-//   const hash = parseLocation();
-
-//   window.onpopstate = () => {
-//     navigateTo(hash);
-//   };
-//   navigateTo(hash || "/");
-// };
 
 const routes = [
   { path: '/', component: Home },
@@ -70,12 +41,6 @@ const router = () => {
     navigateTo(window.location.pathname);
   };
   navigateTo(window.location.pathname || defaultRoute);
-};
-
-export const getCredentials = (credentials) => {
-  if (credentials) {
-    navigateTo('/dashboard');
-  }
 };
 
 export default router;

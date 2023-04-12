@@ -1,6 +1,5 @@
-import { app } from './lib/firebase';
+import { app } from './lib/firebase.js';
 import './lib/LoginGoogle';
-
 import router from './routes';
 
 // Este es el punto de entrada de tu aplicacion
