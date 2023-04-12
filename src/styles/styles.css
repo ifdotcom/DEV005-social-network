@@ -100,32 +100,35 @@ footer img {
   } 
   /* 
   /* Inicio de sesión */
-form {
+#form-login {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
 }
 #container-logo {
   display: flex;
+  grid-area: logoLogin;
 }
-
 #container-logo > img {
-  width: 100px;
-  height: 129px;
+  width: 85px;
+  height: 109px;
+  margin-left: 6%;
 }
 #container-logo > h1 {
   width: 200px;
-  margin-left: 15px;
+  margin-top: 13px;
   font-family: var(--font-primary);
   font-weight: var(--font-w700);
-  font-size: 41px;
+  font-size: 210%;
   color: var(--color-ligth);
   text-shadow: 5px -5px 20px #8bb3ef;
   text-align: center;
 }
 .btn {
-  width: 374px;
-  height: 68px;
+  width: 100%;
+  height: 60px;
   background-color: var(--color-ligth);
   font-family: var(--font-secondary);
   font-weight: var(--font-w500);
@@ -140,8 +143,10 @@ form {
   gap: 17px;
 }
 #button-google {
-  margin-top: 60px;
   cursor: pointer;
+}
+#button-google img{
+  width: 11%;
 }
 #button-google:after {
   content: "";
@@ -160,16 +165,14 @@ form {
   z-index: -1;
 }
 #bars {
-  width: 100%;
+  width: 120%;
   display: flex;
   justify-content: space-between;
-  margin: 45px 0 24px 0;
   align-items: center;
 }
-
 #bar-left,
 #bar-right {
-  width: 130px;
+  width: 123px;
   height: 7px;
   background: linear-gradient(
     270deg,
@@ -177,24 +180,33 @@ form {
     rgba(255, 0, 207, 0.4) 99.99%
   );
 }
-
+#bar-right{
+  background: linear-gradient(
+    90deg,
+    #01faf3 0%,
+    rgba(255, 0, 207, 0.4) 99.99%
+  );
+}
 #bar-text {
   font-family: var(--font-secondary);
   font-weight: var(--font-w700);
-  font-size: 20px;
+  font-size: 16px;
   line-height: 24px;
   color: var(--color-ligth);
 }
-label {
+#form-login label {
   font-family: var(--font-secondary);
   font-weight: var(--font-w700);
   font-size: 20px;
   display: flex;
   align-items: center;
   color: #ffffff;
-  margin-top: 20px;
 }
-
+#form-login input{
+  padding-left: 5%;
+  width: 95%;
+  height: 53px;
+}
 #mail,
 #password {
   border: solid 4px transparent;
@@ -203,15 +215,14 @@ label {
     linear-gradient(70.97deg, #01faf3 37.18%, rgba(248, 22, 206, 0.64) 68.26%);
   background-origin: border-box;
   background-clip: padding-box, border-box;
+  width: 100%;
 }
-
 #mail:focus,
 #password:focus {
   outline: none;
   border: 4px solid transparent;
   box-shadow: 0 0 10px var(--color-btn-primary);
 }
-
 .error {
   border: 4px solid transparent;
 }
@@ -220,36 +231,34 @@ label {
   color: var(--color-ligth);
   font-weight: var(--font-w700);
   font-size: 22px;
-  width: 374px;
+  width: 102%;
   height: 75px;
   background: #01b7b1;
   box-shadow: inset 0px -9px 8px rgba(0, 0, 0, 0.69);
   border: none;
   border-radius: 12px;
-  margin-top: 36px;
   cursor: pointer;
 }
 #links {
-  margin: 33px 0;
+  margin: 25px 0;
   text-align: center;
 }
 #forgot-pwd,#create-account {
-  margin: 34px 0;
+  margin: 25px 0 10px 0;
   text-decoration: none;
   font-family: var(--font-secondary);
   font-weight: var(--font-w700);
   font-size: 16px;
   color: #ffffff;
 }
-
 #create-account > a {
   text-decoration: none;
-color: var(--color-btn-primary) ;
+  color: var(--color-btn-primary) ;
 }
 .none{
-    display: none;
+  display: none;
 }
-.container-login{
+.login-view{
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
@@ -257,6 +266,17 @@ color: var(--color-btn-primary) ;
     "logoLogin logoLogin"
     "container container";
   place-items: center;
+  width: 100%;
+}
+.container-login{
+  grid-area: container;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  width: 82%;
+  font-family: var(--font-secondary);
+  margin-top: 5%;
+  row-gap: 30px;
 }
 /* validaciones formulario */
 #logo-2, #tittleLogo-2{
@@ -289,12 +309,12 @@ color: var(--color-btn-primary) ;
   place-items: center;
   width: 100%;
   font-family: var(--font-secondary);
-  margin-top: 10%;
-  row-gap: 25px;
+  margin-top: 6%;
+  row-gap: 35px;
 }
 .btnG{
   padding: 2%;
-  width: 85%;
+  width: 82%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -349,10 +369,9 @@ color: var(--color-btn-primary) ;
   row-gap: 10px;
   width: 85%;
   color: white;
-}
-#formRegister label{
-  font-size: medium;
   margin-top: -5px;
+  font-size: large;
+  font-weight: bolder;
 }
 .inputStyle{
   padding: 5%;
@@ -363,7 +382,7 @@ color: var(--color-btn-primary) ;
   width: 90%;
 }
 .gradient{
-  background: linear-gradient(70.97deg, #01FAF3 37.18%, rgba(248, 22, 206, 0.64) 68.26%);
+  background: linear-gradient(70.97deg, #01FAF3 37.18%, rgba(246, 92, 218, 0.9) 68.26%);
   padding: 1%;
   border-radius: 20px;
 }
@@ -373,10 +392,11 @@ color: var(--color-btn-primary) ;
   margin-bottom: 3%;
   background-color: rgb(0, 0, 0);
   width: fit-content;
+  visibility: hidden;
 }
 .btnRegister{
   width: 100%;
-  margin-top: 3%;
+  margin-top: 2%;
   cursor: pointer;
 }
 .go-login{
@@ -423,6 +443,7 @@ color: var(--color-btn-primary) ;
   ##Screen = B/w 1025px to 1280px
 */
 @media (min-width: 1025px) {
+  /* -----------Home---------------- */
   main {
     margin: 0;
     height: 85%;
@@ -449,6 +470,9 @@ color: var(--color-btn-primary) ;
     margin-top: 5%;
     font-size: 390%;
   }
+  #tittleLogo-2{
+    justify-content: start;
+  }
   #btns {
     grid-area: sidebar;
     width: 50%;
@@ -456,13 +480,11 @@ color: var(--color-btn-primary) ;
     gap: 35px;
     transform: scale(0.8);
   }
+  /* -----------Register---------------- */
   #tittleLogo-2, #logo-2{
     display: block;
   }
   .tittleFrikis, .logoSmall{
-    display: none;
-  }
-  #container-logo img, .tittle-login{
     display: none;
   }
   #tittleLogo-2{
@@ -482,7 +504,7 @@ color: var(--color-btn-primary) ;
     row-gap: 15px;
   }
   .btnG{
-    padding: .5%;
+    padding: 1.7%;
     border-radius: 10px;
   }
   .btnG::before{
@@ -503,13 +525,14 @@ color: var(--color-btn-primary) ;
     row-gap: 5px;
   }
   .inputStyle{
-    padding: 3%;
-    width: 94%;
+    padding: 4%;
+    width: 92%;
     border-radius: 10px;
     font-size: small;
   }
   .gradient{
     border-radius: 13px;
+    padding: 1.5%;
   }
   .input-error{
     font-size: smaller;
@@ -520,20 +543,82 @@ color: var(--color-btn-primary) ;
   }
   .go-login{
     font-size: .8em;
+    margin-top: 3.5%;
   }
-    /* -----------Pag Error---------------- */
-    #alien {
-      width: 60%;
-      margin-top: 25%;
+  /* -----------Login---------------- */
+  .login-view{
+    width: 52%;
+    margin-left: -15%;
+    margin-top: 2%;
+    grid-area: sidebar;
+  }
+  .container-login{
+    row-gap: 8px;
+  }
+  #form-login{
+    gap: 5px;
+  }
+  #container-logo img, .tittle-login{
+    display: none;
+  }
+  .btn{
+    font-size: .8em;
+    height: 38px;
+    border-radius: 15px;
+  }
+  #button-google:after {
+    top: -3px;
+    bottom: -3px;
+    left: -3px;
+    right: -3px;
+    border-radius: 18px;
+  }
+  #button-google img{
+    width: 10%;
+  }
+  #bars{
+    width: 130%;
+    margin-top: 3%;
+  }
+  #bar-left,
+  #bar-right {
+    width: 100px;
+    height: 5px;
+  }
+  #form-login label{
+    font-size: 14px;
+  }
+  #form-login input{
+    width: 93.5%;
+    height: 38px;
+  }
+  #mail,
+  #password{
+    border-radius: 15px;
+  }
+  #button-login{
+    height: 55px;
+  }
+  #forgot-pwd,#create-account{
+    font-size: 15px;
+    font-weight: lighter;
+  }
+  /* -----------Pag Error---------------- */
+  #alien {
+    width: 60%;  
+    /* width: 45%;  Consultar con Diana */
+    margin-top: 25%;
   }
   #pageNotFoundText {
     color: #fff;
     font-family: var(--font-primary);
     font-size: 40px;
     margin-top: 5%;
+    /* font-size: 35px; Consultar con Diana */
   }
   #alien2 {
     width: 95%;
+    /* width: 55%;  Consultar con Diana */
   }
   #boxCointaing404 {
     position: fixed;
@@ -541,8 +626,8 @@ color: var(--color-btn-primary) ;
     flex-direction: column;
     row-gap: 4px;
     margin-top: 630px;
+    /* margin-top: 360px; Consultar con Diana */
   }
-
   footer{
     padding: 1% 1%;
   }
@@ -578,6 +663,13 @@ color: var(--color-btn-primary) ;
     margin-top: 2%;
     gap: 35px;
   }
+  /* .login-view{
+    transform: scale(1.2);
+  }
+  .container-login{
+    margin-top: 2%;
+    gap: 35px;
+  } */
   #boxCointaing404{
     position: fixed;
     display: flex;
@@ -595,6 +687,5 @@ color: var(--color-btn-primary) ;
     font-family: var(--font-primary);
     font-size: 50px;
     margin-top: 5%;
-}
-
+  }
 }

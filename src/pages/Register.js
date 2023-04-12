@@ -5,7 +5,7 @@ const Register = (navigateTo) => {
   <h1 id="tittleLogo-2">Frikis del Espacio</h1>
   <img id="logo-2" src= "./img/vaca1_480.png" alt="Imagen del logo"/>  
     <div class="register">
-      <h1 class="tittleFrikis">Frikis del Espacio</h1>
+      <h1 class="tittleFrikis">Frikis Del Espacio</h1>
       <img class="logoSmall" src="./img/vaca1_480.png" alt="Vaca abducida por alien"/>
       <div class="container-register">
         <button class="btnG"><img src="./img/G.png" alt="Ícono de google"/><span>Continúa con Google</span></button>
