@@ -35,10 +35,14 @@ const Login = (navigateTo) => {
         </div>
       </div>
       `;
-  const root = document.getElementById('root');
-  root.innerHTML = viewLogin;
-  const btnGoogle = document.getElementById('button-google');
+  // const root = document.getElementById('root');
+  // root.innerHTML = viewLogin;
+  const mainLogin = document.createElement('div');
+  mainLogin.classList.add('main-login');
+  mainLogin.innerHTML = viewLogin;
+
+  const btnGoogle = mainLogin.querySelector('#button-google');
   buttonLoginG(btnGoogle, navigateTo);
-  return viewLogin;
+  return mainLogin;
 };
 export default Login;

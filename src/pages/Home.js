@@ -7,18 +7,20 @@ const Home = (navigateTo) => {
       <button id="btn-register">Registrarse</button>
     </div>
     `;
-  const root = document.getElementById('root');
-  root.innerHTML = viewHome;
+    // const root = document.getElementById('root');
+  const mainContainer = document.createElement('div');
+  mainContainer.classList.add('main-container');
+  mainContainer.innerHTML = viewHome;
 
-  const btnLogin = document.getElementById('btn-login');
+  const btnLogin = mainContainer.querySelector('#btn-login');
 
   btnLogin.addEventListener('click', () => {
     navigateTo('/login');
   });
-  const btnRegister = document.getElementById('btn-register');
+  const btnRegister = mainContainer.querySelector('#btn-register');
   btnRegister.addEventListener('click', () => {
     navigateTo('/register');
   });
-  return viewHome;
+  return mainContainer;
 };
 export default Home;
