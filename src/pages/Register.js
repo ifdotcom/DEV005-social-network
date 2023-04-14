@@ -27,10 +27,14 @@ const Register = (navigateTo) => {
       </div>
     </div>
     `;
-  const root = document.getElementById('root');
-  root.innerHTML = viewRegister;
-  const btnGoogle = document.querySelector('.btnG');
+  // const root = document.getElementById('root');
+  // root.innerHTML = viewRegister;
+  const mainRegister = document.createElement('div');
+  mainRegister.classList.add('main-register');
+  mainRegister.innerHTML = viewRegister;
+
+  const btnGoogle = mainRegister.querySelector('.btnG');
   buttonLoginG(btnGoogle, navigateTo);
-  return viewRegister;
+  return mainRegister;
 };
 export default Register;

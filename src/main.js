@@ -1,4 +1,4 @@
-import { app } from './lib/firebase.js';
+import { app } from './lib/firebase.js';  //eslint-disable-line 
 import './lib/LoginGoogle';
 import router from './routes';
 

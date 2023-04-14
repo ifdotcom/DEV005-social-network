@@ -28,7 +28,10 @@ export function navigateTo(hash) {
       window.location.origin + route.path,
     );
     if (root) {
-      route.component(navigateTo);
+      // route.component(navigateTo);
+      root.innerHTML = '';
+      const newContent = route.component(navigateTo);
+      root.append(newContent);
     }
   } else {
     navigateTo('/error');

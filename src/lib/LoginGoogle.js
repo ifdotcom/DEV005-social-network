@@ -22,7 +22,7 @@ export const buttonLoginG = (button, navigateTo) => {
 };
 
 onAuthStateChanged(auth, (user) => {
-  console.log(user);
+  console.log(user); //eslint-disable-line
 });
 
 export const buttonSignOut = (button, navigateTo) => {
@@ -30,7 +30,7 @@ export const buttonSignOut = (button, navigateTo) => {
     // const auth = getAuth();
     signOut(auth).then(() => {
       navigateTo('/');
-      console.log('se cerró la sesión');// Sign-out successful.
+      console.log('se cerró la sesión'); //eslint-disable-line
     }).catch((error) => {
       console.log(error); //eslint-disable-line
     });
