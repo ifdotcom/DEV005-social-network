@@ -92,9 +92,11 @@ footer img {
     font-size: 21px;
     color: var(--color-ligth);
     text-shadow: 1px 1px 2px black;
+    cursor: pointer;
   }
   #btn-login, .btnRegister {
     background: var(--color-btn-primary);
+    cursor: pointer;
   }
   #btn-register {
     background: var(--color-btn-secondary);
@@ -544,6 +546,7 @@ footer img {
   .btnRegister{
     height: 20%;
     padding: 14px 51px;
+    cursor: pointer;
   }
   .go-login{
     font-size: .8em;
@@ -602,6 +605,7 @@ footer img {
   }
   #button-login{
     height: 55px;
+    cursor: pointer;
   }
   #forgot-pwd,#create-account{
     font-size: 15px;
@@ -664,6 +668,7 @@ footer img {
   }
   .btnRegister{
     height: 65px;
+    cursor: pointer;
   }
   .container-register{
     margin-top: 2%;
