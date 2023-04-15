@@ -1,4 +1,5 @@
 import { buttonLoginG } from '../lib/LoginGoogle';
+import { buttonLogin } from '../lib/LoginEmail';
 
 const Login = (navigateTo) => {
   const viewLogin = `
@@ -40,9 +41,13 @@ const Login = (navigateTo) => {
   const mainLogin = document.createElement('div');
   mainLogin.classList.add('main-login');
   mainLogin.innerHTML = viewLogin;
-
+  const formLogin = mainLogin.querySelector('#form-login');
+  const mail = mainLogin.querySelector('#mail');
+  const password = mainLogin.querySelector('#password');
+  const buttonLog = mainLogin.querySelector('#button-login');
   const btnGoogle = mainLogin.querySelector('#button-google');
   buttonLoginG(btnGoogle, navigateTo);
+  buttonLogin(buttonLog, navigateTo, mail, password, formLogin);
   return mainLogin;
 };
 export default Login;
