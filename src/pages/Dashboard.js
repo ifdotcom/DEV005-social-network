@@ -5,12 +5,14 @@ const Dashboard = (navigateTo) => {
     <h1>bienvenido</h1>
     <button id ="button-singOut" class="btn">Cerrar Sesión</button>
     `;
-  const root = document.getElementById('root');
-  root.innerHTML = viewDashboard;
+  /* const root = document.getElementById('root');
+  root.innerHTML = viewDashboard; */
+  const mainDashboard = document.createElement('div');
+  mainDashboard.classList.add('main-dashboard');
+  mainDashboard.innerHTML = viewDashboard;
 
-  const buttonOut = document.getElementById('button-singOut');
+  const buttonOut = mainDashboard.querySelector('#button-singOut');
   buttonSignOut(buttonOut, navigateTo);
-
-  return viewDashboard;
+  return mainDashboard;
 };
 export default Dashboard;
