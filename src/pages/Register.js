@@ -1,4 +1,5 @@
 import { buttonLoginG } from '../lib/LoginGoogle';
+import { buttonRegister } from '../lib/RegisterEmail';
 
 const Register = (navigateTo) => {
   const viewRegister = `
@@ -33,8 +34,13 @@ const Register = (navigateTo) => {
   mainRegister.classList.add('main-register');
   mainRegister.innerHTML = viewRegister;
 
+  const inputEmail = mainRegister.querySelector('#inputEmail');
+  const inputPassword = mainRegister.querySelector('#inputPassword');
+
+  const btnRegister = mainRegister.querySelector('.btnRegister');
   const btnGoogle = mainRegister.querySelector('.btnG');
   buttonLoginG(btnGoogle, navigateTo);
+  buttonRegister(btnRegister, navigateTo, inputEmail, inputPassword);
   return mainRegister;
 };
 export default Register;
