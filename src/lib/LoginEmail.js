@@ -1,11 +1,29 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const auth = getAuth();
-export const buttonLogin = (button, navigateTo, email, password, form) => {
+export const buttonLogin = (
+  button,
+  navigateTo,
+  email,
+  password,
+  form,
+  errorEmail,
+  errorPassword,
+) => {
   button.addEventListener('click', async (event) => {
     event.preventDefault();
     const passwordValue = password.value;
     const emailValue = email.value;
+    if (emailValue === '' && passwordValue === '') {
+      errorEmail.style.visibility = 'visible';
+      errorEmail.textContent = 'Es un campo obligatorio';
+      errorPassword.style.visibility = 'visible';
+      errorPassword.textContent = 'Es un campo obligatorio';
+      setTimeout(() => {
+        errorEmail.style.visibility = 'hidden';
+        errorPassword.style.visibility = 'hidden';
+      }, 5000);
+    }
     form.reset();
     signInWithEmailAndPassword(auth, emailValue, passwordValue)
       .then((userCredential) => {
@@ -17,9 +35,35 @@ export const buttonLogin = (button, navigateTo, email, password, form) => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode);  //eslint-disable-line
-        console.log(errorMessage); //eslint-disable-line
+        if (errorCode === 'auth/invalid-email' && emailValue !== '') {
+          errorEmail.style.visibility = 'visible';
+          errorEmail.textContent = 'Email incorrecto';
+          setTimeout(() => {
+            errorEmail.style.visibility = 'hidden';
+            errorPassword.style.visibility = 'hidden';
+          }, 5000);
+        } else if (errorCode === 'auth/wrong-password') {
+          errorPassword.style.visibility = 'visible';
+          errorPassword.textContent = 'Contraseña Incorrecta';
+          setTimeout(() => {
+            errorPassword.style.visibility = 'hidden';
+            errorEmail.style.visibility = 'hidden';
+          }, 5000);
+        } else if (errorCode === 'auth/internal-error') {
+          errorPassword.style.visibility = 'visible';
+          errorPassword.textContent = 'Ingresa una contraseña';
+          setTimeout(() => {
+            errorPassword.style.visibility = 'hidden';
+            errorEmail.style.visibility = 'hidden';
+          }, 5000);
+        } else if (errorCode === 'auth/user-not-found') {
+          errorEmail.style.visibility = 'visible';
+          errorEmail.textContent = 'Email incorrecto';
+          setTimeout(() => {
+            errorEmail.style.visibility = 'hidden';
+            errorPassword.style.visibility = 'hidden';
+          }, 5000);
+        }
       });
   });
 };
