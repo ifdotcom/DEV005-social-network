@@ -23,10 +23,15 @@ const Login = (navigateTo) => {
           <form action="" id="form-login">
             <label for="mail">EMAIL</label>
             <input class="btn" type="email" id="mail" name="user_mail" title="El email es incorrecto" placeholder="ejemplo@ejemplo.com" required/>
-            <p class=input-error>*Ingresa un email válido.</p>
+            <p id= "errorEmail" class=input-error>*Ingresa un email válido.</p>
             <label for="password">CONTRASEÑA</label>
-            <input class="btn" type="password" id="password" name="user_password" placeholder="**********" required/>
-            <p class=input-error>*Contraseña [5-10] caracteres. </p>
+            <div class="icon-login">
+              <span class="icon-eye" id="icon-password">
+                <i class="fa-regular fa-eye-slash"></i>
+              </span>
+              <input class="btn" type="password" id="password" name="user_password" placeholder="**********" required/>
+            </div>
+            <p id= "errorPassword" class=input-error>*Contraseña [5-10] caracteres. </p>
             <button id="button-login" type="submit">Iniciar Sesión</button>
             <div id="links">
               <a href="#" id="forgot-pwd">¿Olvidaste tu contraseña?</a>
@@ -36,8 +41,7 @@ const Login = (navigateTo) => {
         </div>
       </div>
       `;
-  // const root = document.getElementById('root');
-  // root.innerHTML = viewLogin;
+
   const mainLogin = document.createElement('div');
   mainLogin.classList.add('main-login');
   mainLogin.innerHTML = viewLogin;
@@ -46,8 +50,25 @@ const Login = (navigateTo) => {
   const password = mainLogin.querySelector('#password');
   const buttonLog = mainLogin.querySelector('#button-login');
   const btnGoogle = mainLogin.querySelector('#button-google');
+  const errorEmail = mainLogin.querySelector('#errorEmail');
+  const errorPassword = mainLogin.querySelector('#errorPassword');
+  const iconEye = mainLogin.querySelector('.icon-eye');
+  iconEye.addEventListener('click', () => {
+    const icon = iconEye.querySelector('i');
+
+    if (iconEye.nextElementSibling.type === 'password') {
+      iconEye.nextElementSibling.type = 'text';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    } else {
+      iconEye.nextElementSibling.type = 'password';
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    }
+  });
   buttonLoginG(btnGoogle, navigateTo);
-  buttonLogin(buttonLog, navigateTo, mail, password, formLogin);
+  buttonLogin(buttonLog, navigateTo, mail, password, formLogin, errorEmail, errorPassword);
+
   return mainLogin;
 };
 export default Login;

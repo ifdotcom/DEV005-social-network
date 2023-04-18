@@ -54,7 +54,7 @@ footer img {
     place-items: center;
     row-gap: 3vh;
   }
-  #tittleLogo, .tittleFrikis, #tittleLogo-2 {
+  #tittleLogo, .tittleFrikis, #tittleLogo-2 , .tittle-dashboard{
     font-family: var(--font-primary);
     font-size: 282%;
     color: #fff;
@@ -238,6 +238,22 @@ footer img {
   border: 4px solid transparent;
   box-shadow: 0 0 10px var(--color-btn-primary);
 }
+.icon-login{
+  position: relative;
+}
+#icon-password{
+  position: absolute;
+  right: 15px;
+  color: rgb(145, 53, 128);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index:1;
+}
+#icon-password:hover{
+  color: #288d89;
+}
 .error {
   border: 4px solid transparent;
 }
@@ -407,6 +423,19 @@ footer img {
   background: linear-gradient(70.97deg, #01FAF3 37.18%, rgba(246, 92, 218, 0.9) 68.26%);
   padding: 1%;
   border-radius: 20px;
+  position: relative;
+}
+.icon-eye{
+  position: absolute;
+  right: 15px;
+  color: rgb(145, 53, 128);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.icon-eye:hover{
+  color: #288d89;
 }
 .input-error{
   color: rgb(255, 55, 55);
@@ -458,6 +487,98 @@ footer img {
     row-gap: 115px;
     margin-top: 50px;
   }
+/* -------------------Dashboard-------------------------- */
+  #headerDashboard{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tittle-dashboard{
+    font-size: 25px;
+    /* background-color: #01faf3; */
+    width: 153%;
+    text-align: center;
+    margin-bottom: 5%;
+   }  
+   
+   #logoSignOut{
+    height: 50px;
+   }
+   #LogOut{
+    /* background-color: #8bb3ef; */
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+   }
+   #button-signOut{
+    font-size: 64%;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+   }
+   #barDashboard {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(
+      270deg,
+      #01faf3 0%,
+      rgba(255, 0, 207, 0.4) 100%
+    );
+    margin-top: 2%;
+    margin-bottom: 5%;
+  }
+  #circleAlien{
+    clip-path: circle(14%);
+    background: linear-gradient(180deg, #01FAF3 0%, rgba(248, 22, 206, 0.64) 100%),
+    linear-gradient(0deg, #FFFFFF, #FFFFFF);
+
+  }
+  #circleAlien2{
+    clip-path: circle(12.5%);
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+  }
+  #imgAlien{
+    width: 20%;
+  }
+  #userName{
+    font-family: 'Montserrat';
+    font-size: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    display: flow-root;
+    margin-top: 4%;
+  }
+#border-textArea{
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  width: 90%;
+  margin: 30px 20px;
+ background: linear-gradient(180deg, #01FAF3 0%, rgba(248, 22, 206, 0.64) 100%),
+    linear-gradient(0deg, #FFFFFF, #FFFFFF);
+}
+
+#post-text{
+  width: 100%;
+  height: 100px;
+  margin: 1%;
+  display: inline-block;
+  resize: none;
+  border-radius: 20px;
+  padding: 10px;
+    background-color: #fff;
+}
+
+.button-post {
+  width: 84px;
+  height: 35px;
+}
+
+  /* media: */
+
 
 /* 
   ##Device = Laptops, Desktops
