@@ -15,15 +15,55 @@ const Dashboard = (navigateTo) => {
         <img id="imgAlien" src= "./img/imgAlienDashboard.png" alt="Imagen de Alien "/>
       </div>
     </div>
-    <p><span id= "userName"> Aquí va el nombre del usuario.</span></p>
+    <p><span id= "userName"> Gabriela79 </span></p>
     <div id = "border-textArea">
-    
-    <textarea id="post-text" name="textarea" placeholder="Escribir publicación..."></textarea>
+      <textarea id="post-text" name="textarea" placeholder="Escribir publicación..."></textarea>
     </div>
-   <button id="button-post" class="btn-post">Continúa con Google
-    </button>
+    <div id="container-btn">
+      <button id="button-post" class="btn-post">Publicar</button>
+    </div>
 
-    <div id='containerPosts'></div>
+    <div id='containerPosts'>
+      <div class="box-gradient">
+        <div id="postPublic">
+          <span id="name-post">Gabriela79</span>
+            <p id="description-post">
+            Lorem ipsum dolor sit amet consectetur adet morbia, orci penatibus cubilia at parturient integer rutrum varius, metus dis scelerisque ligula vitae vel 
+          </p>
+          <span class="icon-pencil">
+            <i class="fa-solid fa-pencil"></i>
+          </span>
+          <span class="icon-trash">
+            <i class="fa-solid fa-trash-can"></i>
+          </span>
+          <span class="icon-star">
+            <span id="likes">10</span>
+            <i class="fa-solid fa-star"></i>
+          </span>
+        </div>
+      </div> 
+      <div class="box-gradient">
+        <div id="postPublic">
+          <span id="name-post">Gabriela79</span>
+            <p id="description-post">
+            Lorem ipsum dolor sit amet consectetur adet morbia, orci penatibus cubilia at parturient integer rutrum varius, metus dis scelerisque ligula vitae vel 
+          </p>
+          <span class="icon-pencil">
+            <i class="fa-solid fa-pencil"></i>
+          </span>
+          <span class="icon-trash">
+            <i class="fa-solid fa-trash-can"></i>
+          </span>
+          <span class="icon-star">
+            <span id="likes">10</span>
+            <i class="fa-solid fa-star"></i>
+          </span>
+        </div>
+      </div> 
+        
+        
+      
+    </div>
     `;
 
   const mainDashboard = document.createElement('div');
