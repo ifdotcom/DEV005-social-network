@@ -10,12 +10,15 @@ const Dashboard = (navigateTo) => {
       </article>
     </div>
     <div id="barDashboard"></div>
+    
+    <div id="profile">
     <div id="circleAlien">
       <div id= "circleAlien2">
         <img id="imgAlien" src= "./img/imgAlienDashboard.png" alt="Imagen de Alien "/>
       </div>
     </div>
-    <p><span id= "userName"> Gabriela79 </span></p>
+    <span id= "userName"> Gabriela79 </span>
+    </div>
     <div id = "border-textArea">
       <textarea id="post-text" name="textarea" placeholder="Escribir publicación..."></textarea>
     </div>
