@@ -62,7 +62,7 @@ const Dashboard = (navigateTo) => {
 
   const postText = mainDashboard.querySelector('#post-text');
   const btnPost = mainDashboard.querySelector('#button-post');
-  const containerPost = mainDashboard.querySelector('#containerPosts');
+  const containerPost = mainDashboard.querySelector('#containerPosts'); //eslint-disable-line
   // savePost();
   sharePost(postText, btnPost);
   return mainDashboard;

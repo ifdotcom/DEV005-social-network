@@ -7,7 +7,7 @@ const Home = (navigateTo) => {
       <button id="btn-register">Registrarse</button>
     </div>
     `;
-    // const root = document.getElementById('root');
+
   const mainContainer = document.createElement('div');
   mainContainer.classList.add('main-container');
   mainContainer.innerHTML = viewHome;
