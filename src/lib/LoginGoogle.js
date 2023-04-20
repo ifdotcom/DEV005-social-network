@@ -1,5 +1,5 @@
 import {
-  signOut, getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged,
+  signOut, getAuth, GoogleAuthProvider, signInWithPopup,
 } from 'firebase/auth';
 // import { async } from 'regenerator-runtime';
 // import { getCredential } from '../utils/GetCredential.js';
@@ -20,10 +20,6 @@ export const buttonLoginG = (button, navigateTo) => {
     }
   });
 };
-
-onAuthStateChanged(auth, (user) => {
-  console.log(user); //eslint-disable-line
-});
 
 export const buttonSignOut = (button, navigateTo) => {
   button.addEventListener('click', async () => {
