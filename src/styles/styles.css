@@ -899,24 +899,26 @@ section > article {
 
   #headerDashboard {
     grid-area: header;
+    align-items: start;
   }
   #barDashboard {
     grid-area: bar;
   }
   #profile {
     grid-area: profile;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   #border-textArea {
     grid-area: textarea;
+    position: relative;
+
   }
   #containerPosts {
     grid-area: posts;
   }
-
-#headerDashboard{
-    align-items: start;
-}
 
 
   #logoSignOut{
@@ -925,17 +927,8 @@ section > article {
 
   }
 
-  #profile {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-  }
   #circleAlien {
     width: 34%;
-  }
-  #border-textArea {
-    position: relative;
   }
   #container-btn {
     position: absolute;

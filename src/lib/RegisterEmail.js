@@ -27,7 +27,7 @@ export const buttonRegister = (button, navigateTo, email, password, errorEmail, 
       })
       .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode);
+        console.log(errorCode); //eslint-disable-line
         if (errorCode === 'auth/email-already-in-use') {
           errorEmail.style.visibility = 'visible';
           errorEmail.textContent = 'El email ya está en uso';

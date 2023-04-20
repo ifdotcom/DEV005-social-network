@@ -5,8 +5,9 @@ const auth = getAuth();
 
 const idUser = [];
 onAuthStateChanged(auth, (user) => {
-  console.log(user.uid);
-    idUser.push(user.uid); //eslint-disable-line
+  console.log(user.uid); //eslint-disable-line
+
+  idUser.push(user.uid);
 });
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -33,9 +34,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         </div>
       </div> 
       `;
+      console.log(doc.id, ' => ', doc.data());  //eslint-disable-line
     return taskContainerPost;
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, ' => ', doc.data());
   });
 });
 export const sharePost = (textArea, btnPublish) => {
