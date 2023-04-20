@@ -3,27 +3,31 @@
  */
 import Home from '../../src/pages/Home.js';
 
-const navigateToMock = jest.fn();
-// matchers
-
-/* navigateToMock('/login'); */
-
 describe('Home', () => {
   it('debería ser una función', () => {
     expect(typeof Home).toBe('function');
   });
+
+  // it('Debería ser un botón', () => {
+  // const DOM = document.createElement('div');
+  // DOM.append(()); función
+  // const haveAButton = DOM.querySelector('#btn-login');
+  //   expect(haveAButton).not.toBe(undefined);
+  // });
+
   // Test del coach regional
-  it('debería de navegar al dar clic en login', () => {
-    const mainContainer = Home(navigateToMock);
+  it('debería de navegar a Login al dar clic en botón', () => {
+    const navigateTo = jest.fn();
+    const mainContainer = Home(navigateTo);
     mainContainer.querySelector('#btn-login').click();
-    expect(navigateToMock).toHaveBeenCalledWith('/login');
+    expect(navigateTo).toHaveBeenCalledWith('/login');
   });
   // Teste---end
-  it('debería de navegar al dar clic en Register', () => {
-    const DOM = document.createElement('div');
-    DOM.append(Home(navigateToMock));
-    DOM.querySelector('#btn-register').click();
-    expect(navigateToMock).toHaveBeenCalledWith('/register');
+  test('debería de navegar a Register al dar clic en botón', () => {
+    const navigateTo = jest.fn();
+    const mainContainer = Home(navigateTo);
+    mainContainer.querySelector('#btn-register').click();
+    expect(navigateTo).toHaveBeenCalledWith('/register');
   });
 });
 // describe('Login')
