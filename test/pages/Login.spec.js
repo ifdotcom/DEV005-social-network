@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 import Login from '../../src/pages/Login.js';
+import * as lgnGoogle from '../../src/lib/LoginGoogle.js';
 
 describe('Login', () => {
   it('Debería ser una función', () => {
@@ -27,7 +28,6 @@ describe('Login', () => {
     DOM.append(Login());
     const iconEye = DOM.querySelector('.icon-eye');
     const icon = DOM.querySelector('i');
-
     iconEye.click();
     setTimeout(() => {
       expect(icon.classList.contains('fa-eye')).toBe(true);
@@ -37,12 +37,15 @@ describe('Login', () => {
 
   it('Función de login con google, debería ser llamado con 2 argumentos', () => {
     const DOM = document.createElement('div');
-    DOM.append(Login());
+    // const navigateTo = jest.fn();
+    jest.spyOn(lgnGoogle, 'buttonLoginG');
+    const navigateTo = () => {
+
+    };
+    DOM.append(Login(navigateTo));
     const btnGoogle = DOM.querySelector('#button-google');
-    const navigateTo = jest.fn();
-    const buttonLoginG = jest.fn();
-    buttonLoginG(btnGoogle, navigateTo);
-    btnGoogle.click();
-    expect(buttonLoginG).toHaveBeenCalledWith(btnGoogle, navigateTo);
+    // btnGoogle.click();
+    expect(lgnGoogle.buttonLoginG).toHaveBeenCalledWith(btnGoogle, navigateTo);
+    // expect(lgnGoogle.buttonLoginG).toHaveBeenCalled();
   });
 });
