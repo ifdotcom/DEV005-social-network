@@ -1,6 +1,6 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './firebase.js';
 
-const auth = getAuth();
 export const buttonLogin = (
   button,
   navigateTo,
