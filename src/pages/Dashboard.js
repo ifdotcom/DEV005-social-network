@@ -1,5 +1,5 @@
 import { buttonSignOut } from '../lib/LoginGoogle.js';
-import { sharePost } from '../lib/Posts.js';
+import { gettingPosts, sharePost } from '../lib/Posts.js';
 
 const Dashboard = (navigateTo) => {
   const viewDashboard = `
@@ -45,10 +45,7 @@ const Dashboard = (navigateTo) => {
             <i class="fa-solid fa-star"></i>
           </span>
         </div>
-      </div> 
-        
-        
-      
+      </div>    
     </div>
     `;
   // Falta poner en constante .. el text area y el botón publicar
@@ -65,6 +62,36 @@ const Dashboard = (navigateTo) => {
   const containerPost = mainDashboard.querySelector('#containerPosts'); //eslint-disable-line
   // savePost();
   sharePost(postText, btnPost);
+
+  gettingPosts((posts) => {
+    const postTemplates = posts.map((post) => {
+      const taskContainerPost = `
+      <div class="box-gradient">
+          <div id="postPublic">
+            <span id="name-post">${post.idUser}</span>
+              <p id="description-post">
+              ${post.post}
+              </p>
+            <span class="icon-pencil">
+              <i class="fa-solid fa-pencil"></i>
+            </span>
+            <span class="icon-trash">
+              <i class="fa-solid fa-trash-can"></i>
+            </span>
+            <span class="icon-star">
+              <span id="likes">10</span>
+              <i class="fa-solid fa-star"></i>
+            </span>
+          </div>
+        </div> 
+        `;
+      return taskContainerPost;
+    });
+    containerPost.innerHTML = postTemplates.join('');
+    // array de strings
+  });
+  // });
+  // dom
   return mainDashboard;
 };
 export default Dashboard;
