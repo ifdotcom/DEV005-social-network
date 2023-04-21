@@ -52,6 +52,7 @@ const Login = (navigateTo) => {
   const btnGoogle = mainLogin.querySelector('#button-google');
   const errorEmail = mainLogin.querySelector('#errorEmail');
   const errorPassword = mainLogin.querySelector('#errorPassword');
+
   const iconEye = mainLogin.querySelector('.icon-eye');
   iconEye.addEventListener('click', () => {
     const icon = iconEye.querySelector('i');

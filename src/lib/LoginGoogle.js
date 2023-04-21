@@ -1,22 +1,20 @@
 import {
-  signOut, getAuth, GoogleAuthProvider, signInWithPopup,
+  signOut, GoogleAuthProvider, signInWithPopup,
 } from 'firebase/auth';
-// import { async } from 'regenerator-runtime';
-// import { getCredential } from '../utils/GetCredential.js';
 
-const auth = getAuth();
+import { auth } from './firebase.js';
+
 export const buttonLoginG = (button, navigateTo) => {
   button.addEventListener('click', async () => {
     const provider = new GoogleAuthProvider();
     try {
       const credentials = await signInWithPopup(auth, provider);
-      // getCredential(credentials);
       if (credentials) {
-        console.log(credentials); //eslint-disable-line  
+        // console.log(credentials); //eslint-disable-line
         navigateTo('/dashboard');
       }
     } catch (error) {
-      console.log(error); //eslint-disable-line
+      // console.log(error); //eslint-disable-line
     }
   });
 };
@@ -26,9 +24,9 @@ export const buttonSignOut = (button, navigateTo) => {
     // const auth = getAuth();
     signOut(auth).then(() => {
       navigateTo('/');
-      console.log('se cerró la sesión'); //eslint-disable-line
-    }).catch((error) => {
-      console.log(error); //eslint-disable-line
+      // console.log('se cerró la sesión'); //eslint-disable-line
+    }).catch(() => {
+      // console.log(error); //eslint-disable-line
     });
   });
 };

@@ -8,12 +8,12 @@ describe('Home', () => {
     expect(typeof Home).toBe('function');
   });
 
-  // it('Debería ser un botón', () => {
-  // const DOM = document.createElement('div');
-  // DOM.append(()); función
-  // const haveAButton = DOM.querySelector('#btn-login');
-  //   expect(haveAButton).not.toBe(undefined);
-  // });
+  it('Debería ser un botón', () => {
+    const DOM = document.createElement('div');
+    DOM.append(Home());
+    const haveAButton = DOM.querySelector('#btn-login');
+    expect(haveAButton).not.toBe(undefined);
+  });
 
   // Test del coach regional
   it('debería de navegar a Login al dar clic en botón', () => {
