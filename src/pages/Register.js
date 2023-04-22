@@ -56,9 +56,69 @@ const Register = (navigateTo) => {
       icon.classList.add('fa-eye-slash');
     }
   });
-
+  // ----
+  btnRegister.addEventListener('click', (event) => {
+    event.preventDefault();
+    const passwordValue = inputPassword.value;
+    const emailValue = inputEmail.value;
+    if (emailValue === '' && passwordValue === '') {
+      errorEmail.style.visibility = 'visible';
+      errorEmail.textContent = 'Es un campo obligatorio';
+      errorPassword.style.visibility = 'visible';
+      errorPassword.textContent = 'Es un campo obligatorio';
+      setTimeout(() => {
+        errorEmail.style.visibility = 'hidden';
+        errorPassword.style.visibility = 'hidden';
+      }, 5000);
+    }
+    buttonRegister(passwordValue, emailValue)
+      .then((user) => {
+        console.log(user.nameUser);
+        if (user.nameUser) {
+          console.log(user.nameUser);
+          navigateTo('/dashboard');
+        }
+      })
+      .catch((error) => {
+        if (error.code === 'auth/email-already-in-use') {
+          errorEmail.style.visibility = 'visible';
+          errorEmail.textContent = 'El email ya está en uso';
+          setTimeout(() => {
+            errorEmail.style.visibility = 'hidden';
+          }, 5000);
+        } else if (error.code === 'auth/internal-error') {
+          errorPassword.style.visibility = 'visible';
+          errorPassword.textContent = 'Ingresa una contraseña';
+          setTimeout(() => {
+            errorPassword.style.visibility = 'hidden';
+            errorEmail.style.visibility = 'hidden';
+          }, 5000);
+        } else if (error.code === 'auth/weak-password') {
+          errorPassword.style.visibility = 'visible';
+          errorPassword.textContent = 'Contraseña mínimo 6 caracteres';
+          setTimeout(() => {
+            errorEmail.style.visibility = 'hidden';
+            errorPassword.style.visibility = 'hidden';
+          }, 5000);
+        } else if (error.code === 'auth/missing-email') {
+          errorEmail.style.visibility = 'visible';
+          errorEmail.textContent = 'Este campo es obligatorio';
+          setTimeout(() => {
+            errorEmail.style.visibility = 'hidden';
+            errorPassword.style.visibility = 'hidden';
+          }, 5000);
+        } else if (error.code === 'auth/invalid-email') {
+          errorEmail.style.visibility = 'visible';
+          errorEmail.textContent = 'Email inválido';
+          setTimeout(() => {
+            errorEmail.style.visibility = 'hidden';
+            errorPassword.style.visibility = 'hidden';
+          }, 5000);
+        }
+      });
+  });
   buttonLoginG(btnGoogle, navigateTo);
-  buttonRegister(btnRegister, navigateTo, inputEmail, inputPassword, errorEmail, errorPassword);
   return mainRegister;
 };
+
 export default Register;
