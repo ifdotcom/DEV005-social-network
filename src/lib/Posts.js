@@ -1,7 +1,5 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { savePost, getPost } from './firebase';
-
-const auth = getAuth();
+import { onAuthStateChanged } from 'firebase/auth';
+import { savePost, getPost, auth } from './firebase';
 
 const idUser = [];
 onAuthStateChanged(auth, (user) => {

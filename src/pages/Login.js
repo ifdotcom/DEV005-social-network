@@ -67,9 +67,64 @@ const Login = (navigateTo) => {
       icon.classList.add('fa-eye-slash');
     }
   });
-  buttonLoginG(btnGoogle, navigateTo);
-  buttonLogin(buttonLog, navigateTo, mail, password, formLogin, errorEmail, errorPassword);
+  // ---
+  buttonLog.addEventListener('click', (event) => {
+    event.preventDefault();
+    const passwordValue = password.value;
+    const emailValue = mail.value;
+    if (emailValue === '' && passwordValue === '') {
+      errorEmail.style.visibility = 'visible';
+      errorEmail.textContent = 'Es un campo obligatorio';
+      errorPassword.style.visibility = 'visible';
+      errorPassword.textContent = 'Es un campo obligatorio';
+      setTimeout(() => {
+        errorEmail.style.visibility = 'hidden';
+        errorPassword.style.visibility = 'hidden';
+      }, 5000);
+    }
+    buttonLogin(passwordValue, emailValue)
+      .then((user) => {
+        console.log(user.nameUser);
+        if (user.nameUser) {
+          console.log(user.nameUser);
+          navigateTo('/dashboard');
+        }
+      })
+      .catch((error) => {
+        if (error.code === 'auth/invalid-email' && emailValue !== '') {
+          errorEmail.style.visibility = 'visible';
+          errorEmail.textContent = 'Email incorrecto';
+          setTimeout(() => {
+            errorEmail.style.visibility = 'hidden';
+            errorPassword.style.visibility = 'hidden';
+          }, 5000);
+        } else if (error.code === 'auth/wrong-password') {
+          errorPassword.style.visibility = 'visible';
+          errorPassword.textContent = 'Contraseña Incorrecta';
+          setTimeout(() => {
+            errorPassword.style.visibility = 'hidden';
+            errorEmail.style.visibility = 'hidden';
+          }, 5000);
+        } else if (error.code === 'auth/internal-error') {
+          errorPassword.style.visibility = 'visible';
+          errorPassword.textContent = 'Ingresa una contraseña';
+          setTimeout(() => {
+            errorPassword.style.visibility = 'hidden';
+            errorEmail.style.visibility = 'hidden';
+          }, 5000);
+        } else if (error.code === 'auth/user-not-found') {
+          errorEmail.style.visibility = 'visible';
+          errorEmail.textContent = 'Email incorrecto';
+          setTimeout(() => {
+            errorEmail.style.visibility = 'hidden';
+            errorPassword.style.visibility = 'hidden';
+          }, 5000);
+        }
+      });
+    formLogin.reset();
+  });
 
+  buttonLoginG(btnGoogle, navigateTo);
   return mainLogin;
 };
 export default Login;
