@@ -1,4 +1,4 @@
-import { buttonSignOut } from '../lib/LoginGoogle.js';
+import { buttonSignOut } from '../lib/SignUp.js';
 import { gettingPosts, sharePost } from '../lib/Posts.js';
 
 const Dashboard = (navigateTo) => {
@@ -55,13 +55,11 @@ const Dashboard = (navigateTo) => {
   mainDashboard.innerHTML = viewDashboard;
 
   const buttonOut = mainDashboard.querySelector('#button-signOut');
-  buttonSignOut(buttonOut, navigateTo);
 
   const postText = mainDashboard.querySelector('#post-text');
   const btnPost = mainDashboard.querySelector('#button-post');
-  const containerPost = mainDashboard.querySelector('#containerPosts'); //eslint-disable-line
+  const containerPost = mainDashboard.querySelector("#containerPosts"); //eslint-disable-line
   // savePost();
-  sharePost(postText, btnPost);
 
   gettingPosts((posts) => {
     const postTemplates = posts.map((post) => {
@@ -92,6 +90,9 @@ const Dashboard = (navigateTo) => {
   });
   // });
   // dom
+  sharePost(postText, btnPost);
+  buttonSignOut(buttonOut, navigateTo);
+
   return mainDashboard;
 };
 export default Dashboard;

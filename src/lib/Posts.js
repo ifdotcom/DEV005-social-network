@@ -1,12 +1,13 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { savePost, getPost, auth } from './firebase';
 
-const idUser = [];
-onAuthStateChanged(auth, (user) => {
-  // console.log(user.uid); //eslint-disable-line
-
-  idUser.push(user.uid);
-});
+export const idUser = () => {
+  const userID = [];
+  onAuthStateChanged(auth, (user) => {
+    userID.push(user.uid);
+  });
+  return userID;
+};
 
 export const gettingPosts = async (callback) => {
   const querySnapshot = await getPost();
@@ -17,9 +18,10 @@ export const gettingPosts = async (callback) => {
   callback(data);
 };
 export const sharePost = (textArea, btnPublish) => {
-  btnPublish.addEventListener('click', () => {
+  btnPublish.addEventListener('click', async () => {
+    const idUserPost = await idUser();
+    const idUserPostSave = idUserPost[0];
     const valueTextArea = textArea.value;
-    const idUserPost = idUser[0];
-    savePost(idUserPost, valueTextArea);
+    savePost(idUserPostSave, valueTextArea);
   });
 };
