@@ -2,8 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import {
-  getFirestore, collection, addDoc, getDocs,
-  doc, onSnapshot,
+  getFirestore, collection, addDoc, getDocs, onSnapshot,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -39,6 +38,6 @@ export const savePost = (idUser, post) => {
 
 export const getPost = () => getDocs(collection(db, 'posts'));
 
-export const onGetPosts = (callback) => onSnapshot(doc(db, 'posts', callback));
+export const onGetPosts = (callback) => onSnapshot(collection(db, 'posts'), callback);
 
 // sólo del firestore

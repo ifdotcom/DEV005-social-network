@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import {
-  savePost, getPost, auth, onGetPosts,
+  savePost, auth, onGetPosts,
 } from './firebase';
 
 export const idUser = () => {
@@ -15,24 +15,24 @@ export const idUser = () => {
 };
 
 // obtener post de firebase
-export const gettingPosts = async (callback) => {
-  const querySnapshot = await getPost();
-  const data = [];
-  querySnapshot.forEach((doc) => {
-    data.push(doc.data());
-  });
-  callback(data);
-};
-// export const gettingPosts = (callback) => {
+// export const gettingPosts = async (callback) => {
+//   const querySnapshot = await getPost();
 //   const data = [];
-//   onGetPosts(() => {
-//     const querySnapshot = getPost();
-//     querySnapshot.forEach((doc) => {
-//       data.push(doc.data());
-//     });
-//     callback(data);
+//   querySnapshot.forEach((doc) => {
+//     data.push(doc.data());
 //   });
+//   callback(data);
 // };
+export const gettingPosts = (callback) => {
+  onGetPosts((querySnapshot) => {
+    // const querySnapshot = getPost();
+    const data = [];
+    querySnapshot.forEach((doc) => {
+      data.push(doc.data());
+    });
+    callback(data);
+  });
+};
 
 // guardar en firebase
 export const savePostFire = (textArea, btnPublish) => {
