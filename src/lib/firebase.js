@@ -39,5 +39,3 @@ export const savePost = (idUser, post) => {
 export const getPost = () => getDocs(collection(db, 'posts'));
 
 export const onGetPosts = (callback) => onSnapshot(collection(db, 'posts'), callback);
-
-// sólo del firestore
