@@ -80,36 +80,43 @@ const Register = (navigateTo) => {
         }
       })
       .catch((error) => {
-        if (error.code === 'auth/email-already-in-use') {
+        if (error === 'auth/email-already-in-use') {
           errorEmail.style.visibility = 'visible';
           errorEmail.textContent = 'El email ya está en uso';
           setTimeout(() => {
             errorEmail.style.visibility = 'hidden';
           }, 5000);
-        } else if (error.code === 'auth/internal-error') {
+        } else if (error === 'auth/internal-error') {
           errorPassword.style.visibility = 'visible';
           errorPassword.textContent = 'Ingresa una contraseña';
           setTimeout(() => {
             errorPassword.style.visibility = 'hidden';
             errorEmail.style.visibility = 'hidden';
           }, 5000);
-        } else if (error.code === 'auth/weak-password') {
+        } else if (error === 'auth/weak-password') {
           errorPassword.style.visibility = 'visible';
           errorPassword.textContent = 'Contraseña mínimo 6 caracteres';
           setTimeout(() => {
             errorEmail.style.visibility = 'hidden';
             errorPassword.style.visibility = 'hidden';
           }, 5000);
-        } else if (error.code === 'auth/missing-email') {
+        } else if (error === 'auth/missing-email') {
           errorEmail.style.visibility = 'visible';
-          errorEmail.textContent = 'Este campo es obligatorio';
+          errorEmail.textContent = 'Ingresa un email';
           setTimeout(() => {
             errorEmail.style.visibility = 'hidden';
             errorPassword.style.visibility = 'hidden';
           }, 5000);
-        } else if (error.code === 'auth/invalid-email') {
+        } else if (error === 'auth/invalid-email' && emailValue !== '') {
           errorEmail.style.visibility = 'visible';
           errorEmail.textContent = 'Email inválido';
+          setTimeout(() => {
+            errorEmail.style.visibility = 'hidden';
+            errorPassword.style.visibility = 'hidden';
+          }, 5000);
+        } else if (error === 'auth/missing-password') {
+          errorPassword.style.visibility = 'visible';
+          errorPassword.textContent = 'Ingresa una contraseña';
           setTimeout(() => {
             errorEmail.style.visibility = 'hidden';
             errorPassword.style.visibility = 'hidden';

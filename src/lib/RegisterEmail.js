@@ -13,7 +13,7 @@ export const buttonRegister = (passwordValue, emailValue) => new Promise((resolv
     })
     .catch((error) => {
       const errorCode = error.code;
-      reject(new Error({ code: errorCode }));
+      reject(errorCode);
         console.log(errorCode); //eslint-disable-line
     });
 });
