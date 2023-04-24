@@ -1,5 +1,6 @@
-import { buttonSignOut } from '../lib/SignUp.js';
-import { gettingPosts, sharePost } from '../lib/Posts.js';
+import { buttonSignOut } from '../lib/SignOut.js';
+import { savePostFire, gettingPosts } from '../lib/Posts.js';
+// import { onGetPosts } from '../lib/firebase.js';
 
 const Dashboard = (navigateTo) => {
   const viewDashboard = `
@@ -48,7 +49,6 @@ const Dashboard = (navigateTo) => {
       </div>    
     </div>
     `;
-  // Falta poner en constante .. el text area y el botón publicar
 
   const mainDashboard = document.createElement('div');
   mainDashboard.classList.add('main-dashboard');
@@ -88,9 +88,7 @@ const Dashboard = (navigateTo) => {
     containerPost.innerHTML = postTemplates.join('');
     // array de strings
   });
-  // });
-  // dom
-  sharePost(postText, btnPost);
+  savePostFire(postText, btnPost);
   buttonSignOut(buttonOut, navigateTo);
 
   return mainDashboard;

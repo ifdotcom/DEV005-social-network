@@ -668,6 +668,7 @@ section > article {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.128);
 }
 #likes {
   font-size: 22px;

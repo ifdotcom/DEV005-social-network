@@ -78,15 +78,18 @@ describe('Login', () => {
     done();
   });
   // Test en mantenimiento, aún no logrado :( ↓
-  it('Debería navegar a dashboard con click en botón', () => {
-    const navigateTo = jest.fn();
+  it('Debería navegar a dashboard con click en botón', (done) => {
+    jest.setTimeout(15000);
+    const navigateTo = jest.fn(() => {
+      expect(navigateTo).toHaveBeenCalledWith('/dashboard');
+      done();
+    });
     jest.spyOn(btnLogin, 'buttonLogin').mockImplementation(() => Promise.resolve({ nameUser: 'patata' }));
     const DOM = document.createElement('div');
     DOM.append(Login(navigateTo));
     const buttonLog = DOM.querySelector('#button-login');
     buttonLog.click();
-    expect(buttonLog).toHaveBeenCalled();
-    expect(navigateTo).toHaveBeenCalledWith('/dashboard');
+    expect(btnLogin.buttonLogin).toHaveBeenCalled();
   });
 
   it('Función de login con google, debería ser llamado con 2 argumentos', () => {
