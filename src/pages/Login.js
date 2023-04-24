@@ -91,30 +91,39 @@ const Login = (navigateTo) => {
         }
       })
       .catch((error) => {
-        if (error.code === 'auth/invalid-email' && emailValue !== '') {
+        if (error === 'auth/invalid-email' && emailValue !== '') {
           errorEmail.style.visibility = 'visible';
           errorEmail.textContent = 'Email incorrecto';
           setTimeout(() => {
             errorEmail.style.visibility = 'hidden';
             errorPassword.style.visibility = 'hidden';
           }, 5000);
-        } else if (error.code === 'auth/wrong-password') {
+        } else if (error === 'auth/wrong-password') {
           errorPassword.style.visibility = 'visible';
           errorPassword.textContent = 'Contraseña Incorrecta';
           setTimeout(() => {
             errorPassword.style.visibility = 'hidden';
             errorEmail.style.visibility = 'hidden';
           }, 5000);
-        } else if (error.code === 'auth/internal-error') {
+        } else if (error === 'auth/missing-password') {
           errorPassword.style.visibility = 'visible';
           errorPassword.textContent = 'Ingresa una contraseña';
           setTimeout(() => {
             errorPassword.style.visibility = 'hidden';
             errorEmail.style.visibility = 'hidden';
           }, 5000);
-        } else if (error.code === 'auth/user-not-found') {
+        } else if (error === 'auth/user-not-found') {
+          errorPassword.style.visibility = 'visible';
+          errorPassword.textContent = 'Usuario no registrado';
           errorEmail.style.visibility = 'visible';
-          errorEmail.textContent = 'Email incorrecto';
+          errorEmail.textContent = 'Usuario no registrado';
+          setTimeout(() => {
+            errorEmail.style.visibility = 'hidden';
+            errorPassword.style.visibility = 'hidden';
+          }, 5000);
+        } else if (error === 'auth/invalid-email' && passwordValue !== '') {
+          errorEmail.style.visibility = 'visible';
+          errorEmail.textContent = 'Ingresa una email';
           setTimeout(() => {
             errorEmail.style.visibility = 'hidden';
             errorPassword.style.visibility = 'hidden';
