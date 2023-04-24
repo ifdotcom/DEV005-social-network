@@ -12,6 +12,5 @@ export const buttonLogin = (passwordValue, emailValue) => new Promise((resolve, 
     .catch((error) => {
       const errorCode = error.code;
       reject(errorCode);
-      // console.log(errorCode); //eslint-disable-line
     });
 });

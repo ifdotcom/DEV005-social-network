@@ -1,14 +1,20 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import { savePost, getPost, auth } from './firebase';
+import {
+  savePost, getPost, auth, onGetPosts,
+} from './firebase';
 
 export const idUser = () => {
   const userID = [];
   onAuthStateChanged(auth, (user) => {
-    userID.push(user.uid);
+    const emailName = user.email;
+    const emailAt = emailName.search('@');
+    const emailCutted = emailName.slice(0, emailAt);
+    userID.push(emailCutted);
   });
   return userID;
 };
 
+// obtener post de firebase
 export const gettingPosts = async (callback) => {
   const querySnapshot = await getPost();
   const data = [];
@@ -17,7 +23,19 @@ export const gettingPosts = async (callback) => {
   });
   callback(data);
 };
-export const sharePost = (textArea, btnPublish) => {
+// export const gettingPosts = (callback) => {
+//   const data = [];
+//   onGetPosts(() => {
+//     const querySnapshot = getPost();
+//     querySnapshot.forEach((doc) => {
+//       data.push(doc.data());
+//     });
+//     callback(data);
+//   });
+// };
+
+// guardar en firebase
+export const savePostFire = (textArea, btnPublish) => {
   btnPublish.addEventListener('click', async () => {
     const idUserPost = await idUser();
     const idUserPostSave = idUserPost[0];
@@ -25,3 +43,5 @@ export const sharePost = (textArea, btnPublish) => {
     savePost(idUserPostSave, valueTextArea);
   });
 };
+
+// export const getPosts = c(gettingPosts);

@@ -1,5 +1,6 @@
-import { buttonSignOut } from '../lib/SignUp.js';
-import { gettingPosts, sharePost } from '../lib/Posts.js';
+import { buttonSignOut } from '../lib/SignOut.js';
+import { savePostFire, gettingPosts } from '../lib/Posts.js';
+import { onGetPosts } from '../lib/firebase.js';
 
 const Dashboard = (navigateTo) => {
   const viewDashboard = `
@@ -48,7 +49,6 @@ const Dashboard = (navigateTo) => {
       </div>    
     </div>
     `;
-  // Falta poner en constante .. el text area y el botón publicar
 
   const mainDashboard = document.createElement('div');
   mainDashboard.classList.add('main-dashboard');
@@ -60,10 +60,10 @@ const Dashboard = (navigateTo) => {
   const btnPost = mainDashboard.querySelector('#button-post');
   const containerPost = mainDashboard.querySelector("#containerPosts"); //eslint-disable-line
   // savePost();
-
-  gettingPosts((posts) => {
-    const postTemplates = posts.map((post) => {
-      const taskContainerPost = `
+  onGetPosts(
+    gettingPosts((posts) => {
+      const postTemplates = posts.map((post) => {
+        const taskContainerPost = `
       <div class="box-gradient">
           <div id="postPublic">
             <span id="name-post">${post.idUser}</span>
@@ -83,14 +83,14 @@ const Dashboard = (navigateTo) => {
           </div>
         </div> 
         `;
-      return taskContainerPost;
-    });
-    containerPost.innerHTML = postTemplates.join('');
+        return taskContainerPost;
+      });
+      containerPost.innerHTML = postTemplates.join('');
     // array de strings
-  });
-  // });
-  // dom
-  sharePost(postText, btnPost);
+    }),
+  );
+
+  savePostFire(postText, btnPost);
   buttonSignOut(buttonOut, navigateTo);
 
   return mainDashboard;
