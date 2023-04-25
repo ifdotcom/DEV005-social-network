@@ -14,6 +14,6 @@ export const buttonRegister = (passwordValue, emailValue) => new Promise((resolv
     .catch((error) => {
       const errorCode = error.code;
       reject(errorCode);
-        console.log(errorCode); //eslint-disable-line
+      //  console.log(errorCode); //eslint-disable-line
     });
 });

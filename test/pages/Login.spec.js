@@ -77,9 +77,8 @@ describe('Login', () => {
     expect(errorPassword.style.visibility).toBe('hidden');
     done();
   });
-  // Test en mantenimiento, aún no logrado :( ↓
+  // Test en mantenimiento, logrado aun no sabemos como :( ↓
   it('Debería navegar a dashboard con click en botón', (done) => {
-    jest.setTimeout(15000);
     const navigateTo = jest.fn(() => {
       expect(navigateTo).toHaveBeenCalledWith('/dashboard');
       done();
@@ -90,6 +89,25 @@ describe('Login', () => {
     const buttonLog = DOM.querySelector('#button-login');
     buttonLog.click();
     expect(btnLogin.buttonLogin).toHaveBeenCalled();
+  });
+
+  it('Debería hacer visible un mensaje por cada error al loguearse', () => {
+    const navigateTo = jest.fn();
+    const DOM = document.createElement('div');
+    DOM.append(Login(navigateTo));
+    const mail = DOM.querySelector('#mail');
+    const buttonLog = DOM.querySelector('#button-login');
+    const errorEmail = DOM.querySelector('#errorEmail');
+    const errorPassword = DOM.querySelector('#errorPassword');
+    let error = '';
+    buttonLog.click();
+    jest.spyOn(btnLogin, 'buttonLogin').mockImplementation(() => Promise.reject(error));
+    error = 'auth/invalid-email' && mail.value !== '';
+    expect(errorEmail.style.visibility).toBe('visible');
+    error = 'auth/wrong-password';
+    expect(errorPassword.style.visibility).toBe('visible');
+    error = 'auth/missing-password';
+    expect(errorPassword.style.visibility).toBe('visible');
   });
 
   it('Función de login con google, debería ser llamado con 2 argumentos', () => {
