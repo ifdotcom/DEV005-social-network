@@ -84,9 +84,8 @@ const Login = (navigateTo) => {
     }
     buttonLogin(passwordValue, emailValue)
       .then((user) => {
-        console.log(user.nameUser);
+        // console.log(user.nameUser);
         if (user.nameUser) {
-          console.log(user.nameUser);
           navigateTo('/dashboard');
         }
       })
