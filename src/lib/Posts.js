@@ -14,21 +14,12 @@ export const idUser = () => {
   return userID;
 };
 
-// obtener post de firebase
-// export const gettingPosts = async (callback) => {
-//   const querySnapshot = await getPost();
-//   const data = [];
-//   querySnapshot.forEach((doc) => {
-//     data.push(doc.data());
-//   });
-//   callback(data);
-// };
 export const gettingPosts = (callback) => {
   onGetPosts((querySnapshot) => {
     // const querySnapshot = getPost();
     const data = [];
     querySnapshot.forEach((doc) => {
-      data.push(doc.data());
+      data.push(doc);
     });
     callback(data);
   });
@@ -40,8 +31,9 @@ export const savePostFire = (textArea, btnPublish) => {
     const idUserPost = await idUser();
     const idUserPostSave = idUserPost[0];
     const valueTextArea = textArea.value;
-    savePost(idUserPostSave, valueTextArea);
+    const datePost = Date(Date.now());
+    const datePostFormat = datePost.toString();
+    savePost(idUserPostSave, valueTextArea, datePostFormat);
+    textArea.value = '';
   });
 };
-
-// export const getPosts = c(gettingPosts);

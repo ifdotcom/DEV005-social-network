@@ -1,6 +1,6 @@
 import { buttonSignOut } from '../lib/SignOut.js';
 import { savePostFire, gettingPosts } from '../lib/Posts.js';
-// import { onGetPosts } from '../lib/firebase.js';
+import { deletePost } from '../lib/firebase.js';
 
 const Dashboard = (navigateTo) => {
   const viewDashboard = `
@@ -55,31 +55,30 @@ const Dashboard = (navigateTo) => {
   mainDashboard.innerHTML = viewDashboard;
 
   const buttonOut = mainDashboard.querySelector('#button-signOut');
-
   const postText = mainDashboard.querySelector('#post-text');
   const btnPost = mainDashboard.querySelector('#button-post');
-  const containerPost = mainDashboard.querySelector("#containerPosts"); //eslint-disable-line
+  const containerPost = mainDashboard.querySelector('#containerPosts');
   // savePost();
-
   gettingPosts((posts) => {
     const postTemplates = posts.map((post) => {
+      const dataPost = post.data();
       const taskContainerPost = `
       <div class="box-gradient">
           <div id="postPublic">
-            <span id="name-post">${post.idUser}</span>
+            <span id="name-post">${dataPost.idUser}</span>
               <p id="description-post">
-              ${post.post}
+              ${dataPost.post}
               </p>
-            <span class="icon-pencil">
+            <buton class="btn-edit icon-pencil" data-id="${post.id}">
               <i class="fa-solid fa-pencil"></i>
-            </span>
-            <span class="icon-trash">
+            </buton>
+            <buton class="btn-delete icon-trash" data-id="${post.id}">
               <i class="fa-solid fa-trash-can"></i>
-            </span>
-            <span class="icon-star">
+            </buton>
+            <buton class="icon-star" data-id="${post.id}">
               <span id="likes">10</span>
               <i class="fa-solid fa-star"></i>
-            </span>
+            </buton>
           </div>
         </div> 
         `;
@@ -87,10 +86,26 @@ const Dashboard = (navigateTo) => {
     });
     containerPost.innerHTML = postTemplates.join('');
     // array de strings
+    const btnsDelete = containerPost.querySelectorAll('.btn-delete');
+    btnsDelete.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idPost2 = btn.dataset.id;
+        deletePost(idPost2);
+      });
+    });
+    const btnsEdit = containerPost.querySelectorAll('.btn-edit');
+    btnsEdit.forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        // const idPost = btn.dataset.id;
+
+        // editPost(idPost);
+        // const post = await getPost(idPost);
+        // const dataPost = post.data();
+      });
+    });
   });
   savePostFire(postText, btnPost);
   buttonSignOut(buttonOut, navigateTo);
-
   return mainDashboard;
 };
 export default Dashboard;
