@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import {
-  getFirestore, collection, addDoc, getDocs, onSnapshot,
+  getFirestore, doc, deleteDoc, collection, addDoc, getDocs, onSnapshot, orderBy, updateDoc, getDoc,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -32,10 +32,14 @@ export const auth = getAuth(app);
 // Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore(app);
 // Función para guardar posts
-export const savePost = (idUser, post) => {
-  addDoc(collection(db, 'posts'), { idUser, post });
+export const savePost = (idUser, post, date) => {
+  addDoc(collection(db, 'posts'), { idUser, post, date });
 };
 
-export const getPost = () => getDocs(collection(db, 'posts'));
+export const getPosts = () => getDocs(collection(db, 'posts'));
 
-export const onGetPosts = (callback) => onSnapshot(collection(db, 'posts'), callback);
+export const onGetPosts = (callback) => onSnapshot(collection(db, 'posts'), orderBy('datePost', 'des'), callback);
+
+export const deletePost = (id) => deleteDoc(doc(db, 'posts', id));
+export const getPost = (id) => getDoc(doc(db, 'posts', id));
+export const editPost = (id) => updateDoc(doc(db, 'posts', id));
