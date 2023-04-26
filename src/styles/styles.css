@@ -620,8 +620,8 @@ section > article {
 }
 
 #containerPosts {
-  width: 90%;
-  margin: 30px 20px;
+  width: 93%;
+  margin: 30px 10px;
 }
 
 .box-gradient {
@@ -638,6 +638,7 @@ section > article {
   border-radius: 20px;
   background-color: var(--color-ligth);
   position: relative;
+  padding: 20px 0;
 }
 .icon-pencil,
 .icon-trash {
@@ -692,7 +693,7 @@ section > article {
   font-weight: var(--font-w500);
   font-size: 16px;
   color: #50315e;
-  margin: 10px 20px;
+  margin: 30px 20px;
 }
 
 /* 
@@ -890,9 +891,9 @@ section > article {
   .main-dashboard {
     display: grid;
     grid-template-columns: 25% 50% 25%;
-    grid-template-rows: 250px auto 250px;
+    grid-template-rows: 150px auto 250px;
     grid-template-areas:
-      "header header header"
+      ". header header"
       "bar bar bar"
       "profile textarea ."
       ". posts .";
@@ -900,10 +901,20 @@ section > article {
 
   #headerDashboard {
     grid-area: header;
-    align-items: start;
+    align-items: center;
+    gap: 155px;
+  }
+  .tittle-dashboard {
+    font-size: 60px;
+    margin: 0;
+  }
+  #button-signOut {
+    font-size: 90%;
   }
   #barDashboard {
     grid-area: bar;
+    width: 96%;
+    margin-left: 20px;
   }
   #profile {
     grid-area: profile;
@@ -911,25 +922,30 @@ section > article {
     flex-direction: column;
     align-items: center;
   }
-
   #border-textArea {
     grid-area: textarea;
     position: relative;
-
+  }
+  #post-text {
+    padding: 40px;
   }
   #containerPosts {
     grid-area: posts;
   }
+  #postPublic {
+    height: 300px;
+  }
 
-
-  #logoSignOut{
-        width: 150px;
+  #logoSignOut {
+    width: 150px;
     height: 125px;
-
   }
 
   #circleAlien {
-    width: 34%;
+    width: 150%;
+  }
+  #uerName {
+    font-size: 22px;
   }
   #container-btn {
     position: absolute;
