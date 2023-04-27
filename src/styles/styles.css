@@ -695,7 +695,28 @@ section > article {
   color: #50315e;
   margin: 30px 20px;
 }
-
+.modal{
+  display: none;
+  background: yellow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: center;
+  background-color: rgba(0,0,0,0.4);
+  overflow: auto;
+  padding-top: 20%;
+  z-index: 1;
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%;
+  text-align: center;
+}
 /* 
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
