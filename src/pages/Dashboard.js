@@ -48,6 +48,13 @@ const Dashboard = (navigateTo) => {
         </div>
       </div>    
     </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <p>¿Estas seguro(a) de eliminar tu publicación?</p>
+        <button id="yes">Sí</button>
+        <button id="not">No</button>
+      </div>
+    </div>
     `;
 
   const mainDashboard = document.createElement('div');
@@ -58,6 +65,12 @@ const Dashboard = (navigateTo) => {
   const postText = mainDashboard.querySelector('#post-text');
   const btnPost = mainDashboard.querySelector('#button-post');
   const containerPost = mainDashboard.querySelector('#containerPosts');
+  const myModal = mainDashboard.querySelector('#myModal');
+  const not = mainDashboard.querySelector('#not');
+  const yes = mainDashboard.querySelector('#yes');
+  not.addEventListener('click', () => {
+    myModal.style.display = 'none';
+  });
   // savePost();
   gettingPosts((posts) => {
     const postTemplates = posts.map((post) => {
@@ -90,7 +103,11 @@ const Dashboard = (navigateTo) => {
     btnsDelete.forEach((btn) => {
       btn.addEventListener('click', () => {
         const idPost2 = btn.dataset.id;
-        deletePost(idPost2);
+        myModal.style.display = 'block';
+        yes.addEventListener('click', () => {
+          deletePost(idPost2);
+          myModal.style.display = 'none';
+        });
       });
     });
     const btnsEdit = containerPost.querySelectorAll('.btn-edit');

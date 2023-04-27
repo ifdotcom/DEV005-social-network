@@ -33,7 +33,9 @@ export const savePostFire = (textArea, btnPublish) => {
     const valueTextArea = textArea.value;
     const datePost = Date(Date.now());
     const datePostFormat = datePost.toString();
-    savePost(idUserPostSave, valueTextArea, datePostFormat);
+    if (valueTextArea !== '') {
+      savePost(idUserPostSave, valueTextArea, datePostFormat);
+    }
     textArea.value = '';
   });
 };
