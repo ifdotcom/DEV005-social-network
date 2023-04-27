@@ -1,6 +1,6 @@
 import { buttonSignOut } from '../lib/SignOut.js';
 import { savePostFire, gettingPosts } from '../lib/Posts.js';
-import { deletePost } from '../lib/firebase.js';
+import { deletePost, getPost } from '../lib/firebase.js';
 
 const Dashboard = (navigateTo) => {
   const viewDashboard = `
@@ -72,6 +72,7 @@ const Dashboard = (navigateTo) => {
     myModal.style.display = 'none';
   });
   // savePost();
+  let updateStatus = false;
   gettingPosts((posts) => {
     const postTemplates = posts.map((post) => {
       const dataPost = post.data();
@@ -82,16 +83,16 @@ const Dashboard = (navigateTo) => {
               <p id="description-post">
               ${dataPost.post}
               </p>
-            <buton class="btn-edit icon-pencil" data-id="${post.id}">
+            <button class="btn-edit icon-pencil" data-id="${post.id}">
               <i class="fa-solid fa-pencil"></i>
-            </buton>
-            <buton class="btn-delete icon-trash" data-id="${post.id}">
+            </button>
+            <button class="btn-delete icon-trash" data-id="${post.id}">
               <i class="fa-solid fa-trash-can"></i>
-            </buton>
-            <buton class="icon-star" data-id="${post.id}">
+            </button>
+            <button class="icon-star" data-id="${post.id}">
               <span id="likes">10</span>
               <i class="fa-solid fa-star"></i>
-            </buton>
+            </button>
           </div>
         </div> 
         `;
@@ -113,15 +114,17 @@ const Dashboard = (navigateTo) => {
     const btnsEdit = containerPost.querySelectorAll('.btn-edit');
     btnsEdit.forEach((btn) => {
       btn.addEventListener('click', async () => {
-        // const idPost = btn.dataset.id;
-
+        const idPost = btn.dataset.id;
         // editPost(idPost);
-        // const post = await getPost(idPost);
-        // const dataPost = post.data();
+        const post = await getPost(idPost);
+        console.log(post.data());
+        const dataPost = post.data();
+        postText.value = dataPost.post;
+        updateStatus = true;
       });
     });
   });
-  savePostFire(postText, btnPost);
+  savePostFire(postText, btnPost, updateStatus);
   buttonSignOut(buttonOut, navigateTo);
   return mainDashboard;
 };

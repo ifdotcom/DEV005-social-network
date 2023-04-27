@@ -26,16 +26,27 @@ export const gettingPosts = (callback) => {
 };
 
 // guardar en firebase
-export const savePostFire = (textArea, btnPublish) => {
+export const savePostFire = (textArea, btnPublish, updateStatus) => {
   btnPublish.addEventListener('click', async () => {
     const idUserPost = await idUser();
     const idUserPostSave = idUserPost[0];
     const valueTextArea = textArea.value;
     const datePost = Date(Date.now());
     const datePostFormat = datePost.toString();
-    if (valueTextArea !== '') {
-      savePost(idUserPostSave, valueTextArea, datePostFormat);
+    // if (valueTextArea !== '') {
+    //   if (updateStatus) {
+    //     console.log('updating');
+    //   } else {
+    //     savePost(idUserPostSave, valueTextArea, datePostFormat);
+    //   }
+    // }
+    if (!updateStatus) {
+      await savePost(idUserPostSave, valueTextArea, datePostFormat);
+    } else {
+      // updateStatus = false;
+      console.log('updating');
     }
+
     textArea.value = '';
   });
 };
