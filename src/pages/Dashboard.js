@@ -1,6 +1,6 @@
 import { buttonSignOut } from '../lib/SignOut.js';
 import { savePostFire, gettingPosts } from '../lib/Posts.js';
-import { deletePost, getPost } from '../lib/firebase.js';
+import { deletePost, getPost, editPost } from '../lib/firebase.js';
 
 const Dashboard = (navigateTo) => {
   const viewDashboard = `
@@ -71,8 +71,9 @@ const Dashboard = (navigateTo) => {
   not.addEventListener('click', () => {
     myModal.style.display = 'none';
   });
+  let editStatus = false;
+  let id = '';
   // savePost();
-  let updateStatus = false;
   gettingPosts((posts) => {
     const postTemplates = posts.map((post) => {
       const dataPost = post.data();
@@ -114,17 +115,27 @@ const Dashboard = (navigateTo) => {
     const btnsEdit = containerPost.querySelectorAll('.btn-edit');
     btnsEdit.forEach((btn) => {
       btn.addEventListener('click', async () => {
+        postText.focus();
         const idPost = btn.dataset.id;
-        // editPost(idPost);
         const post = await getPost(idPost);
-        console.log(post.data());
         const dataPost = post.data();
         postText.value = dataPost.post;
-        updateStatus = true;
+        editStatus = true;
+        id = idPost;
+        btnPost.innerHTML = 'Guardar';
       });
     });
   });
-  savePostFire(postText, btnPost, updateStatus);
+  btnPost.addEventListener('click', () => {
+    if (!editStatus) {
+      savePostFire(postText);
+    } else {
+      editPost(id, { post: postText.value });
+      editStatus = false;
+      btnPost.innerHTML = 'Publicar';
+      postText.value = '';
+    }
+  });
   buttonSignOut(buttonOut, navigateTo);
   return mainDashboard;
 };

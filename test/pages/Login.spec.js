@@ -64,7 +64,7 @@ describe('Login', () => {
     expect(errorPassword.textContent).toBe('Es un campo obligatorio');
   });
 
-  it('Los mensajes de error deberían desaparecer a los 5 segundos', (done) => {
+  it('Los mensajes de error deberían desaparecer a los 5 segundos', () => {
     const DOM = document.createElement('div');
     DOM.append(Login());
     const buttonLog = DOM.querySelector('#button-login');
@@ -75,20 +75,21 @@ describe('Login', () => {
     jest.advanceTimersByTime(5000);
     expect(errorEmail.style.visibility).toBe('hidden');
     expect(errorPassword.style.visibility).toBe('hidden');
-    done();
+    jest.useRealTimers();
   });
   // Test en mantenimiento, logrado aun no sabemos como :( ↓
   it('Debería navegar a dashboard con click en botón', (done) => {
-    const navigateTo = jest.fn(() => {
-      expect(navigateTo).toHaveBeenCalledWith('/dashboard');
-      done();
-    });
+    const navigateTo = jest.fn();
     jest.spyOn(btnLogin, 'buttonLogin').mockImplementation(() => Promise.resolve({ nameUser: 'patata' }));
     const DOM = document.createElement('div');
     DOM.append(Login(navigateTo));
     const buttonLog = DOM.querySelector('#button-login');
     buttonLog.click();
     expect(btnLogin.buttonLogin).toHaveBeenCalled();
+    setTimeout(() => {
+      expect(navigateTo).toHaveBeenCalledWith('/dashboard');
+      done();
+    }, 0);
   });
 
   it('Debería hacer visible un mensaje por cada error al loguearse', () => {
