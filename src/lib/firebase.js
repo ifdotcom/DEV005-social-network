@@ -2,7 +2,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import {
-  getFirestore, doc, deleteDoc, collection, addDoc, getDocs, onSnapshot, orderBy, updateDoc, getDoc,
+  getFirestore, doc, deleteDoc, collection, addDoc,
+  getDocs, onSnapshot, orderBy, updateDoc, getDoc,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -42,4 +43,7 @@ export const onGetPosts = (callback) => onSnapshot(collection(db, 'posts'), orde
 
 export const deletePost = (id) => deleteDoc(doc(db, 'posts', id));
 export const getPost = (id) => getDoc(doc(db, 'posts', id));
-export const editPost = (id) => updateDoc(doc(db, 'posts', id));
+export const editPost = (id, newPost) => updateDoc(doc(db, 'posts', id), newPost);
+
+/* const aaa = doc(db, 'posts');
+export const addArray = updateDoc(aaa, { likes: arrayUnion('0fghg') }); */

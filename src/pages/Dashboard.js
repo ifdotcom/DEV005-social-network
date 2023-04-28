@@ -1,6 +1,6 @@
 import { buttonSignOut } from '../lib/SignOut.js';
 import { savePostFire, gettingPosts } from '../lib/Posts.js';
-import { deletePost } from '../lib/firebase.js';
+import { deletePost, getPost, editPost } from '../lib/firebase.js';
 
 const Dashboard = (navigateTo) => {
   const viewDashboard = `
@@ -71,6 +71,8 @@ const Dashboard = (navigateTo) => {
   not.addEventListener('click', () => {
     myModal.style.display = 'none';
   });
+  let editStatus = false;
+  let id = '';
   // savePost();
   gettingPosts((posts) => {
     const postTemplates = posts.map((post) => {
@@ -82,16 +84,16 @@ const Dashboard = (navigateTo) => {
               <p id="description-post">
               ${dataPost.post}
               </p>
-            <buton class="btn-edit icon-pencil" data-id="${post.id}">
+            <button class="btn-edit icon-pencil" data-id="${post.id}">
               <i class="fa-solid fa-pencil"></i>
-            </buton>
-            <buton class="btn-delete icon-trash" data-id="${post.id}">
+            </button>
+            <button class="btn-delete icon-trash" data-id="${post.id}">
               <i class="fa-solid fa-trash-can"></i>
-            </buton>
-            <buton class="icon-star" data-id="${post.id}">
+            </button>
+            <button class="icon-star" data-id="${post.id}">
               <span id="likes">10</span>
               <i class="fa-solid fa-star"></i>
-            </buton>
+            </button>
           </div>
         </div> 
         `;
@@ -113,15 +115,27 @@ const Dashboard = (navigateTo) => {
     const btnsEdit = containerPost.querySelectorAll('.btn-edit');
     btnsEdit.forEach((btn) => {
       btn.addEventListener('click', async () => {
-        // const idPost = btn.dataset.id;
-
-        // editPost(idPost);
-        // const post = await getPost(idPost);
-        // const dataPost = post.data();
+        postText.focus();
+        const idPost = btn.dataset.id;
+        const post = await getPost(idPost);
+        const dataPost = post.data();
+        postText.value = dataPost.post;
+        editStatus = true;
+        id = idPost;
+        btnPost.innerHTML = 'Guardar';
       });
     });
   });
-  savePostFire(postText, btnPost);
+  btnPost.addEventListener('click', () => {
+    if (!editStatus) {
+      savePostFire(postText);
+    } else {
+      editPost(id, { post: postText.value });
+      editStatus = false;
+      btnPost.innerHTML = 'Publicar';
+      postText.value = '';
+    }
+  });
   buttonSignOut(buttonOut, navigateTo);
   return mainDashboard;
 };
