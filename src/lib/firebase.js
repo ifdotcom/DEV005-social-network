@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import {
   getFirestore, doc, deleteDoc, collection, addDoc,
-  getDocs, onSnapshot, orderBy, updateDoc, getDoc,
+  getDocs, onSnapshot, orderBy, updateDoc, getDoc, arrayUnion,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -33,8 +33,11 @@ export const auth = getAuth(app);
 // Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore(app);
 // Función para guardar posts
-export const savePost = (idUser, post, date) => {
-  addDoc(collection(db, 'posts'), { idUser, post, date });
+// se crea la colección
+export const savePost = (idUser, post, date, likes) => {
+  addDoc(collection(db, 'posts'), {
+    idUser, post, date, likes,
+  });
 };
 
 export const getPosts = () => getDocs(collection(db, 'posts'));
@@ -45,5 +48,18 @@ export const deletePost = (id) => deleteDoc(doc(db, 'posts', id));
 export const getPost = (id) => getDoc(doc(db, 'posts', id));
 export const editPost = (id, newPost) => updateDoc(doc(db, 'posts', id), newPost);
 
-/* const aaa = doc(db, 'posts');
-export const addArray = updateDoc(aaa, { likes: arrayUnion('0fghg') }); */
+/* export const likePost = async (id, idUser) => {
+  const getPostNow = await getPost(id);
+  const post = getPostNow.data();
+  const likes = post.likes || [];
+  if (likes.includes(idUser)) {
+    console.log('ya tiene like');
+  } else {
+    await updateDoc(postRef, {
+      likes: arrayUnion(idUser),
+    });
+  }
+}; */
+export const likePost = (id, idUser) => updateDoc(doc(db, 'posts', id), {
+  likes: arrayUnion(idUser),
+});
