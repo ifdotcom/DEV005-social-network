@@ -1,6 +1,9 @@
+import { onAuthStateChanged } from 'firebase/auth';
 import { buttonSignOut } from '../lib/SignOut.js';
 import { savePostFire, gettingPosts } from '../lib/Posts.js';
-import { deletePost, getPost, editPost } from '../lib/firebase.js';
+import {
+  deletePost, getPost, editPost, auth, likePost,
+} from '../lib/firebase.js';
 
 const Dashboard = (navigateTo) => {
   const viewDashboard = `
@@ -60,7 +63,7 @@ const Dashboard = (navigateTo) => {
   const mainDashboard = document.createElement('div');
   mainDashboard.classList.add('main-dashboard');
   mainDashboard.innerHTML = viewDashboard;
-
+  const userName = mainDashboard.querySelector('#userName');
   const buttonOut = mainDashboard.querySelector('#button-signOut');
   const postText = mainDashboard.querySelector('#post-text');
   const btnPost = mainDashboard.querySelector('#button-post');
@@ -71,6 +74,14 @@ const Dashboard = (navigateTo) => {
   not.addEventListener('click', () => {
     myModal.style.display = 'none';
   });
+  let emailCutted;
+  onAuthStateChanged(auth, (user) => {
+    const emailName = user.email;
+    const emailAt = emailName.search('@');
+    emailCutted = emailName.slice(0, emailAt);
+    userName.innerHTML = emailCutted;
+  });
+
   let editStatus = false;
   let id = '';
   // savePost();
@@ -90,9 +101,9 @@ const Dashboard = (navigateTo) => {
             <button class="btn-delete icon-trash" data-id="${post.id}">
               <i class="fa-solid fa-trash-can"></i>
             </button>
-            <button class="icon-star" data-id="${post.id}">
-              <span id="likes">10</span>
-              <i class="fa-solid fa-star"></i>
+            <button class="btn-like icon-star" data-id="${post.id}">
+              <span class="counterLikes" data-id="${post.id}">${dataPost.likes.length}</span>
+              <i class="fa-solid fa-star" data-id="${post.id}"></i>
             </button>
           </div>
         </div> 
@@ -123,6 +134,22 @@ const Dashboard = (navigateTo) => {
         editStatus = true;
         id = idPost;
         btnPost.innerHTML = 'Guardar';
+      });
+    });
+    const btnsLikes = containerPost.querySelectorAll('.btn-like');
+    btnsLikes.forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        onAuthStateChanged(auth, async (user) => {
+          const idPost3 = event.target.dataset.id;
+          const post = await getPost(idPost3);
+          const dataPost = post.data();
+          const likes = dataPost.likes || [];
+          if (likes.includes(user.email)) {
+            console.log('noo');
+          } else {
+            await likePost(idPost3, user.email);
+          }
+        });
       });
     });
   });

@@ -674,7 +674,7 @@ section > article {
   -webkit-text-fill-color: transparent;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.128);
 }
-#likes {
+.counterLikes {
   font-size: 22px;
   font-family: var(--font-secondary);
   font-weight: var(--font-w700);

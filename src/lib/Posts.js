@@ -32,8 +32,9 @@ export const savePostFire = async (textArea) => {
   const valueTextArea = textArea.value;
   const datePost = Date(Date.now());
   const datePostFormat = datePost.toString();
+  const likes = [];
   if (valueTextArea !== '') {
-    savePost(idUserPostSave, valueTextArea, datePostFormat);
+    savePost(idUserPostSave, valueTextArea, datePostFormat, likes);
   }
   textArea.value = '';
 };
