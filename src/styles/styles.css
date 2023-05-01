@@ -509,12 +509,12 @@ section > article {
 }
 /* -------------------Dashboard-------------------------- */
 #headerDashboard {
-  display: inline-flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .tittle-dashboard {
-  font-size: 25px;
+  font-size: 1.5em;
   width: 153%;
   text-align: center;
   margin-bottom: 5%;
@@ -526,6 +526,7 @@ section > article {
   display: flex;
   flex-direction: column;
   width: 150px;
+  margin-right: 5%;
 }
 #button-signOut {
   font-size: 64%;
@@ -601,6 +602,7 @@ section > article {
   border: 4px transparent;
   border-radius: 20px;
   position: relative;
+  cursor: pointer;
 }
 .btn-post::after {
   content: "";
@@ -617,12 +619,10 @@ section > article {
   border-radius: 20px;
   z-index: -1;
 }
-
 #containerPosts {
   width: 93%;
   margin: 30px 10px;
 }
-
 .box-gradient {
   margin-top: 45px;
   border-radius: 20px;
@@ -642,24 +642,57 @@ section > article {
 .icon-pencil,
 .icon-trash {
   position: absolute;
-  top: 20%;
-  right: 40px;
+  top: 50px;
+  right: 30px;
   transform: translateY(-50%);
   cursor: pointer;
   border: none;
   background: transparent;
 }
 .icon-pencil {
-  margin-right: 12%;
+  margin-right: 70px;
 }
 .icon-star {
   position: absolute;
-  bottom: -1%;
+  bottom: 5px;
   right: 15px;
   transform: translateY(-50%);
   cursor: pointer;
   border: none;
   background: transparent;
+}
+.animated:active {
+  animation: button-click .2s ease-out;
+  animation-duration: .85s;
+  animation-name: like-button-animation;
+  transform: scale(1);
+  animation-iteration-count: infinite;
+}
+@keyframes like-button-animation {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+      transform: scale(1.5);
+  }
+  50% {
+      transform: scale(.95);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+.loading{
+  margin-left: 12%;
+  font-family: var(--font-secondary);
+  font-size: 2em;
+  color: #50315e;
+  margin-top: 10%;
+}
+#ovniL{
+  width: 20%;
+  margin-left: 2%;
+  margin-top: 10%;
 }
 .fa-solid {
   font-size: 1.8em;
@@ -698,10 +731,10 @@ section > article {
   color: #50315e;
   margin: 30px 20px;
   overflow-wrap: anywhere;
+  line-height : 1.8;
 }
 .modal {
   display: none;
-  background: yellow;
   position: fixed;
   top: 0;
   left: 0;
@@ -709,16 +742,65 @@ section > article {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   overflow: auto;
-  padding-top: 20%;
+  padding-top: 50%;
   z-index: 1;
 }
 .modal-content {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 20%;
+  padding: 40px 20px;
+  border: 3px solid #693f7d;
+  border-radius: 15px;
+  width: 70%;
   text-align: center;
+  font-size: 1.3em;
+  font-family: var(--font-secondary);
+}
+.modal-content p{
+  margin-bottom: 10%;
+}
+#yes, #not{
+  width: 90px;
+  padding: 3%;
+  border-radius: 10px;
+  border-color: #d7d3d3;
+  font-size: .9em;
+  font-family: var(--font-secondary);
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+#yes{
+  background-color: #693f7d;
+  color: white;
+  margin-right: 50px;
+}
+#not{
+  color:#774a8d;
+}
+/* 
+  ##Device = Tablet
+  ##Screen = B/w 750
+*/
+@media (min-width: 750px) {
+  .tittle-dashboard{
+    font-size: 3em;
+  }
+  #userName {
+    font-size: 1.5em;
+    margin-bottom: 5%;
+    margin-top: 2%;
+  }
+  #container-btn{
+    margin-left: -4%;
+  }
+  #logoSignOut {
+    height: 95px;
+  }
+  #LogOut{
+    font-size: 1.4em;
+    width: 205px;
+  }
 }
 /* 
   ##Device = Laptops, Desktops
@@ -959,12 +1041,13 @@ section > article {
   #postPublic {
     height: auto;
   }
-
+  .loading{
+    margin-left: 20%;
+  }
   #logoSignOut {
     width: 150px;
     height: 125px;
   }
-
   #circleAlien {
     width: 150%;
   }
@@ -976,8 +1059,14 @@ section > article {
     right: 317px;
     top: 490px;
   }
+  .modal{
+    padding-top: 10%;
+  }
+  .modal-content{
+    width: 30%;
+    font-size: 1.1em;
+  }
 }
-
 /* 
   ##Device =  Desktops grandes
   ##Screen = min-width 1920px

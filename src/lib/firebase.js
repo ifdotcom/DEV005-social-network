@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import {
   getFirestore, doc, deleteDoc, collection, addDoc,
-  getDocs, onSnapshot, orderBy, updateDoc, getDoc, arrayUnion,
+  getDocs, onSnapshot, orderBy, updateDoc, getDoc, arrayUnion, arrayRemove,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -39,27 +39,14 @@ export const savePost = (idUser, post, date, likes) => {
     idUser, post, date, likes,
   });
 };
-
 export const getPosts = () => getDocs(collection(db, 'posts'));
-
 export const onGetPosts = (callback) => onSnapshot(collection(db, 'posts'), orderBy('datePost', 'des'), callback);
-
 export const deletePost = (id) => deleteDoc(doc(db, 'posts', id));
 export const getPost = (id) => getDoc(doc(db, 'posts', id));
 export const editPost = (id, newPost) => updateDoc(doc(db, 'posts', id), newPost);
-
-/* export const likePost = async (id, idUser) => {
-  const getPostNow = await getPost(id);
-  const post = getPostNow.data();
-  const likes = post.likes || [];
-  if (likes.includes(idUser)) {
-    console.log('ya tiene like');
-  } else {
-    await updateDoc(postRef, {
-      likes: arrayUnion(idUser),
-    });
-  }
-}; */
 export const likePost = (id, idUser) => updateDoc(doc(db, 'posts', id), {
   likes: arrayUnion(idUser),
+});
+export const dislikePost = (id, idUser) => updateDoc(doc(db, 'posts', id), {
+  likes: arrayRemove(idUser),
 });
