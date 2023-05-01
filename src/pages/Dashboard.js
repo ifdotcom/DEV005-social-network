@@ -2,7 +2,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { buttonSignOut } from '../lib/SignOut.js';
 import { savePostFire, gettingPosts } from '../lib/Posts.js';
 import {
-  deletePost, getPost, editPost, auth, likePost,
+  deletePost, getPost, editPost, auth, likePost, dislikePost,
 } from '../lib/firebase.js';
 
 const Dashboard = (navigateTo) => {
@@ -34,26 +34,14 @@ const Dashboard = (navigateTo) => {
     <div id='containerPosts'>
       <div class="box-gradient">
         <div id="postPublic">
-          <span id="name-post">Gabriela79</span>
-            <p id="description-post">
-            Lorem ipsum dolor sit amet consectetur adet morbia, orci penatibus cubilia at parturient integer rutrum varius, metus dis scelerisque ligula vitae vel 
-          </p>
-          <span class="icon-pencil">
-            <i class="fa-solid fa-pencil"></i>
-          </span>
-          <span class="icon-trash">
-            <i class="fa-solid fa-trash-can"></i>
-          </span>
-          <span class="icon-star">
-            <span id="likes">10</span>
-            <i class="fa-solid fa-star"></i>
-          </span>
+          <span class="loading">Cargando...</span>
+          <img id="ovniL" src= "./img/ovni.gif" alt="Ovni girando"/>
         </div>
       </div>    
     </div>
     <div id="myModal" class="modal">
       <div class="modal-content">
-        <p>¿Estas seguro(a) de eliminar tu publicación?</p>
+        <p>¿Estás seguro(a) de eliminar tu publicación?</p>
         <button id="yes">Sí</button>
         <button id="not">No</button>
       </div>
@@ -81,7 +69,6 @@ const Dashboard = (navigateTo) => {
     emailCutted = emailName.slice(0, emailAt);
     userName.innerHTML = emailCutted;
   });
-
   let editStatus = false;
   let id = '';
   // savePost();
@@ -89,9 +76,9 @@ const Dashboard = (navigateTo) => {
     const postTemplates = posts.map((post) => {
       const dataPost = post.data();
       const taskContainerPost = `
-      <div class="box-gradient">
+        <div class="box-gradient">
           <div id="postPublic">
-            <span id="name-post">${dataPost.idUser}</span>
+            <span id="name-post" class="name-user-post">${dataPost.idUser}</span>
               <p id="description-post">
               ${dataPost.post}
               </p>
@@ -103,7 +90,7 @@ const Dashboard = (navigateTo) => {
             </button>
             <button class="btn-like icon-star" data-id="${post.id}">
               <span class="counterLikes" data-id="${post.id}">${dataPost.likes.length}</span>
-              <i class="fa-solid fa-star" data-id="${post.id}"></i>
+              <i class="fa-solid fa-star animated" data-id="${post.id}"></i>
             </button>
           </div>
         </div> 
@@ -143,9 +130,9 @@ const Dashboard = (navigateTo) => {
           const idPost3 = event.target.dataset.id;
           const post = await getPost(idPost3);
           const dataPost = post.data();
-          const likes = dataPost.likes || [];
+          const likes = dataPost.likes;
           if (likes.includes(user.email)) {
-            console.log('noo');
+            await dislikePost(idPost3, user.email);
           } else {
             await likePost(idPost3, user.email);
           }
