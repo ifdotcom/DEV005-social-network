@@ -32,6 +32,9 @@ const Dashboard = (navigateTo) => {
     <div id = "border-textArea">
       <textarea id="post-text" name="textarea" placeholder="Escribir publicación..."></textarea>
     </div>
+    <div id = "msg-post">
+      <span id="msg-post-text">Se ha compartido tu publicación</span>
+    </div>
     <div id="container-btn">
       <button id="button-post" class="btn-post">Publicar</button>
     </div>
@@ -59,6 +62,7 @@ const Dashboard = (navigateTo) => {
   const userName = mainDashboard.querySelector('#userName');
   const buttonOut = mainDashboard.querySelector('#button-signOut');
   const postText = mainDashboard.querySelector('#post-text');
+  const msgPosT = mainDashboard.querySelector('#msg-post');
   const btnPost = mainDashboard.querySelector('#button-post');
   const containerPost = mainDashboard.querySelector('#containerPosts');
   const myModal = mainDashboard.querySelector('#myModal');
@@ -170,11 +174,20 @@ const Dashboard = (navigateTo) => {
   btnPost.addEventListener('click', () => {
     if (!editStatus) {
       savePostFire(postText);
+      msgPosT.style.display = 'block';
+      setTimeout(() => {
+        msgPosT.style.display = 'none';
+      }, 2000);
     } else {
       editPost(id, { post: postText.value });
       editStatus = false;
       btnPost.innerHTML = 'Publicar';
       postText.value = '';
+       msgPosT.style.display = "block";
+      msgPosT.innerHTML = "Se ha editado tu publicación";
+       setTimeout(() => {
+         msgPosT.style.display = "none";
+       }, 2000);
     }
   });
   buttonSignOut(buttonOut, navigateTo);
