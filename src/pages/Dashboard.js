@@ -183,11 +183,11 @@ const Dashboard = (navigateTo) => {
       editStatus = false;
       btnPost.innerHTML = 'Publicar';
       postText.value = '';
-       msgPosT.style.display = "block";
-      msgPosT.innerHTML = "Se ha editado tu publicación";
-       setTimeout(() => {
-         msgPosT.style.display = "none";
-       }, 2000);
+      msgPosT.style.display = 'block';
+      msgPosT.innerHTML = 'Se ha editado tu publicación';
+      setTimeout(() => {
+        msgPosT.style.display = 'none';
+      }, 2000);
     }
   });
   buttonSignOut(buttonOut, navigateTo);

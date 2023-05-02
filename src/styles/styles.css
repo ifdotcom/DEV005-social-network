@@ -797,7 +797,7 @@ section > article {
   ##Device = Tablet
   ##Screen = B/w 750
 */
-@media ((min-width: 750px) and (max-with: 1024px)) {
+@media ((min-width: 750px) and (max-width: 1024px)) {
   .tittle-dashboard {
     font-size: 3em;
   }
