@@ -585,6 +585,16 @@ section > article {
   outline: transparent;
   border: none;
 }
+
+#msg-post {
+  color: var(--color-ligth);
+  font-family: var(--font-secondary);
+  display: none;
+  width: 100%;
+  height: 25px;
+  text-align: center;
+  margin: 20px 0;
+}
 #container-btn {
   width: 100vw;
   display: flex;
@@ -639,7 +649,8 @@ section > article {
   position: relative;
   padding: 20px 0;
 }
-.btn-edit, .btn-delete{
+.btn-edit,
+.btn-delete {
   display: none;
 }
 .icon-pencil,
@@ -665,8 +676,8 @@ section > article {
   background: transparent;
 }
 .animated:active {
-  animation: button-click .2s ease-out;
-  animation-duration: .85s;
+  animation: button-click 0.2s ease-out;
+  animation-duration: 0.85s;
   animation-name: like-button-animation;
   transform: scale(1);
   animation-iteration-count: infinite;
@@ -676,23 +687,23 @@ section > article {
     transform: scale(1);
   }
   25% {
-      transform: scale(1.5);
+    transform: scale(1.5);
   }
   50% {
-      transform: scale(.95);
+    transform: scale(0.95);
   }
   100% {
-      transform: scale(1);
+    transform: scale(1);
   }
 }
-.loading{
+.loading {
   margin-left: 12%;
   font-family: var(--font-secondary);
   font-size: 2em;
   color: #50315e;
   margin-top: 10%;
 }
-#ovniL{
+#ovniL {
   width: 20%;
   margin-left: 2%;
   margin-top: 10%;
@@ -734,7 +745,7 @@ section > article {
   color: #50315e;
   margin: 30px 20px;
   overflow-wrap: anywhere;
-  line-height : 1.8;
+  line-height: 1.8;
 }
 .modal {
   display: none;
@@ -759,34 +770,35 @@ section > article {
   font-size: 1.3em;
   font-family: var(--font-secondary);
 }
-.modal-content p{
+.modal-content p {
   margin-bottom: 10%;
 }
-#yes, #not{
+#yes,
+#not {
   width: 90px;
   padding: 3%;
   border-radius: 10px;
   border-color: #d7d3d3;
-  font-size: .9em;
+  font-size: 0.9em;
   font-family: var(--font-secondary);
   cursor: pointer;
   font-weight: bold;
   letter-spacing: 2px;
 }
-#yes{
+#yes {
   background-color: #693f7d;
   color: white;
   margin-right: 50px;
 }
-#not{
-  color:#774a8d;
+#not {
+  color: #774a8d;
 }
 /* 
   ##Device = Tablet
   ##Screen = B/w 750
 */
-@media (min-width: 750px) {
-  .tittle-dashboard{
+@media ((min-width: 750px) and (max-with: 1024px)) {
+  .tittle-dashboard {
     font-size: 3em;
   }
   #userName {
@@ -794,13 +806,13 @@ section > article {
     margin-bottom: 5%;
     margin-top: 2%;
   }
-  #container-btn{
+  #container-btn {
     margin-left: -4%;
   }
   #logoSignOut {
     height: 95px;
   }
-  #LogOut{
+  #LogOut {
     font-size: 1.4em;
     width: 205px;
   }
@@ -1005,6 +1017,7 @@ section > article {
       ". header header"
       "bar bar bar"
       "profile textarea ."
+      ". msgPost ."
       ". posts .";
   }
 
@@ -1035,6 +1048,11 @@ section > article {
     grid-area: textarea;
     position: relative;
   }
+  #msg-post {
+    grid-area: msgPost;
+    width: 50%;
+    margin: 0;
+  }
   #post-text {
     padding: 40px;
   }
@@ -1044,7 +1062,7 @@ section > article {
   #postPublic {
     height: auto;
   }
-  .loading{
+  .loading {
     margin-left: 20%;
   }
   #logoSignOut {
@@ -1062,10 +1080,10 @@ section > article {
     right: 362px;
     top: 490px;
   }
-  .modal{
+  .modal {
     padding-top: 10%;
   }
-  .modal-content{
+  .modal-content {
     width: 30%;
     font-size: 1.1em;
   }
@@ -1176,19 +1194,19 @@ section > article {
     margin-left: -230px;
     margin-top: 42px;
   }
-  #button-signOut{
+  #button-signOut {
     font-size: 130%;
   }
-  #border-textArea{
+  #border-textArea {
     width: 93%;
     margin-left: 1%;
   }
-  #container-btn{
+  #container-btn {
     transform: scale(1.5);
     right: 990px;
     top: 540px;
   }
-  .btn-post{
+  .btn-post {
     margin-left: -50%;
   }
   .icon-pencil,
@@ -1196,7 +1214,7 @@ section > article {
     transform: scale(1.3);
     margin-top: -3%;
   }
-  #userName{
+  #userName {
     font-size: 30px;
   }
 }
