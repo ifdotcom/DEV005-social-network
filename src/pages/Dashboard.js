@@ -66,7 +66,7 @@ const Dashboard = (navigateTo) => {
   const userName = mainDashboard.querySelector('#userName');
   const buttonOut = mainDashboard.querySelector('#button-signOut');
   const postText = mainDashboard.querySelector('#post-text');
-  const postImg = mainDashboard.querySelector("#img-post");
+  const postImg = mainDashboard.querySelector('#img-post');
   const msgPosT = mainDashboard.querySelector('#msg-post');
   const btnPost = mainDashboard.querySelector('#button-post');
   const containerPost = mainDashboard.querySelector('#containerPosts');
@@ -189,11 +189,11 @@ const Dashboard = (navigateTo) => {
       editStatus = false;
       btnPost.innerHTML = 'Publicar';
       postText.value = '';
-       msgPosT.style.display = "block";
-      msgPosT.innerHTML = "Se ha editado tu publicación";
-       setTimeout(() => {
-         msgPosT.style.display = "none";
-       }, 2000);
+      msgPosT.style.display = 'block';
+      msgPosT.innerHTML = 'Se ha editado tu publicación';
+      setTimeout(() => {
+        msgPosT.style.display = 'none';
+      }, 2000);
     }
   });
   buttonSignOut(buttonOut, navigateTo);

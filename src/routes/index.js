@@ -4,6 +4,7 @@ import Footer from '../templates/Footer.js';
 import Register from '../pages/Register.js';
 import Login from '../pages/Login.js';
 import Dashboard from '../pages/Dashboard.js';
+import { verifyUser } from '../lib/firebase.js';
 
 const root = document.getElementById('root');
 const footer = document.getElementById('footer');
@@ -43,6 +44,7 @@ const router = () => {
   window.onpopstate = () => {
     navigateTo(window.location.pathname);
   };
+  verifyUser();
   navigateTo(window.location.pathname || defaultRoute);
 };
 
