@@ -34,7 +34,6 @@ const Login = (navigateTo) => {
             <p id= "errorPassword" class=input-error>*Contraseña [5-10] caracteres. </p>
             <button id="button-login" type="submit">Iniciar Sesión</button>
             <div id="links">
-              <a href="#" id="forgot-pwd">¿Olvidaste tu contraseña?</a>
               <p id="create-account">¿No tienes una cuenta? <a href="/register">Crea una</a></span></p>
             </div>
           </form>
