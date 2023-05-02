@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import {
   getFirestore, doc, deleteDoc, collection, addDoc,
-  getDocs, onSnapshot, orderBy, updateDoc, getDoc, arrayUnion, arrayRemove,
+  getDocs, onSnapshot, orderBy, updateDoc, getDoc, arrayUnion, arrayRemove, query,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -40,7 +40,7 @@ export const savePost = (idUser, post, date, likes) => {
   });
 };
 export const getPosts = () => getDocs(collection(db, 'posts'));
-export const onGetPosts = (callback) => onSnapshot(collection(db, 'posts'), orderBy('datePost', 'des'), callback);
+export const onGetPosts = (callback) => onSnapshot(query(collection(db, 'posts'), orderBy('date', 'desc')), callback);
 export const deletePost = (id) => deleteDoc(doc(db, 'posts', id));
 export const getPost = (id) => getDoc(doc(db, 'posts', id));
 export const editPost = (id, newPost) => updateDoc(doc(db, 'posts', id), newPost);

@@ -2,7 +2,12 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { buttonSignOut } from '../lib/SignOut.js';
 import { savePostFire, gettingPosts } from '../lib/Posts.js';
 import {
-  deletePost, getPost, editPost, auth, likePost, dislikePost,
+  deletePost,
+  getPost,
+  editPost,
+  auth,
+  likePost,
+  dislikePost,
 } from '../lib/firebase.js';
 
 const Dashboard = (navigateTo) => {
@@ -69,12 +74,22 @@ const Dashboard = (navigateTo) => {
     emailCutted = emailName.slice(0, emailAt);
     userName.innerHTML = emailCutted;
   });
+
+  // funcion para traer el usuario
+  const userAuthor = (idAuthor) => {
+    if (emailCutted === idAuthor) {
+      return true;
+    }
+    return false;
+  };
+
   let editStatus = false;
   let id = '';
   // savePost();
   gettingPosts((posts) => {
     const postTemplates = posts.map((post) => {
       const dataPost = post.data();
+      console.log(dataPost);
       const taskContainerPost = `
         <div class="box-gradient">
           <div id="postPublic">
@@ -82,10 +97,10 @@ const Dashboard = (navigateTo) => {
               <p id="description-post">
               ${dataPost.post}
               </p>
-            <button class="btn-edit icon-pencil" data-id="${post.id}">
+            <button class="btn-edit icon-pencil" data-id="${post.id}" data-user ="${dataPost.idUser}">
               <i class="fa-solid fa-pencil"></i>
             </button>
-            <button class="btn-delete icon-trash" data-id="${post.id}">
+            <button class="btn-delete icon-trash" data-id="${post.id}" data-user ="${dataPost.idUser}">
               <i class="fa-solid fa-trash-can"></i>
             </button>
             <button class="btn-like icon-star" data-id="${post.id}">
@@ -95,9 +110,12 @@ const Dashboard = (navigateTo) => {
           </div>
         </div> 
         `;
+
       return taskContainerPost;
     });
+
     containerPost.innerHTML = postTemplates.join('');
+
     // array de strings
     const btnsDelete = containerPost.querySelectorAll('.btn-delete');
     btnsDelete.forEach((btn) => {
@@ -109,6 +127,10 @@ const Dashboard = (navigateTo) => {
           myModal.style.display = 'none';
         });
       });
+      const btnDeleteUser = btn.dataset.user;
+      if (userAuthor(btnDeleteUser)) {
+        btn.style.display = 'block';
+      }
     });
     const btnsEdit = containerPost.querySelectorAll('.btn-edit');
     btnsEdit.forEach((btn) => {
@@ -122,7 +144,12 @@ const Dashboard = (navigateTo) => {
         id = idPost;
         btnPost.innerHTML = 'Guardar';
       });
+      const btnEditUser = btn.dataset.user;
+      if (userAuthor(btnEditUser)) {
+        btn.style.display = 'block';
+      }
     });
+
     const btnsLikes = containerPost.querySelectorAll('.btn-like');
     btnsLikes.forEach((btn) => {
       btn.addEventListener('click', (event) => {

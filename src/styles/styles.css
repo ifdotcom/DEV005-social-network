@@ -639,6 +639,9 @@ section > article {
   position: relative;
   padding: 20px 0;
 }
+.btn-edit, .btn-delete{
+  display: none;
+}
 .icon-pencil,
 .icon-trash {
   position: absolute;
@@ -1056,7 +1059,7 @@ section > article {
   }
   #container-btn {
     position: absolute;
-    right: 317px;
+    right: 362px;
     top: 490px;
   }
   .modal{
@@ -1075,7 +1078,6 @@ section > article {
   #bars {
     margin: 0;
   }
-  #mail,
   #password {
     padding: 3%;
     font-size: small;
