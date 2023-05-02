@@ -14,12 +14,3 @@ export const buttonSignOut = (button, navigateTo) => {
       });
   });
 };
-
-/* export const singOutNow = (navigateTo) => {
-  signOut(auth)
-    .then(() => {
-      navigateTo('/');
-    })
-    .catch(() => {
-    });
-}; */
