@@ -30,7 +30,7 @@ export const savePostFire = async (textArea) => {
   const idUserPost = await idUser();
   const idUserPostSave = idUserPost[0];
   const valueTextArea = textArea.value;
-  const datePost = Date(Date.now());
+  const datePost = Date.now();
   const datePostFormat = datePost.toString();
   const likes = [];
   if (valueTextArea !== '') {
