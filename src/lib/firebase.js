@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import {
   getFirestore, doc, deleteDoc, collection, addDoc,
   getDocs, onSnapshot, orderBy, updateDoc, getDoc, arrayUnion, arrayRemove, query,
@@ -50,3 +50,19 @@ export const likePost = (id, idUser) => updateDoc(doc(db, 'posts', id), {
 export const dislikePost = (id, idUser) => updateDoc(doc(db, 'posts', id), {
   likes: arrayRemove(idUser),
 });
+export const verifyUser = () => {
+  onAuthStateChanged(auth, (user) => {
+    console.log(user);
+    if (window.location.pathname === '/dashboard' && user === null) {
+      window.location.pathname = '/';
+    } else if (window.location.pathname === '/' && user) {
+      window.location.pathname = '/dashboard';
+    } else if (window.location.pathname === '/login' && user) {
+      window.location.pathname = '/dashboard';
+    } else if (window.location.pathname === '/register' && user) {
+      window.location.pathname = '/dashboard';
+    } else if (window.location.pathname === '' && user) {
+      window.location.pathname = '/dashboard';
+    }
+  });
+};

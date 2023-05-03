@@ -3,6 +3,7 @@
  */
 import Register from '../../src/pages/Register.js';
 import * as lgnGoogle from '../../src/lib/LoginGoogle.js';
+import * as btnRegis from '../../src/lib/RegisterEmail.js';
 
 describe('Register', () => {
   it('Debería ser una función', () => {
@@ -43,7 +44,7 @@ describe('Register', () => {
     expect(inputPassword.type).toBe('password');
   });
 
-  it('El botón de login debería lanzar un error, si los input están vacíos', () => {
+  it('El botón de register debería lanzar un error, si los input están vacíos', () => {
     const DOM = document.createElement('div');
     DOM.append(Register());
     const inputEmail = DOM.querySelector('#inputEmail');
@@ -58,6 +59,34 @@ describe('Register', () => {
     expect(errorPassword.style.visibility).toBe('visible');
     expect(errorEmail.textContent).toBe('Es un campo obligatorio');
     expect(errorPassword.textContent).toBe('Es un campo obligatorio');
+  });
+
+  it('Los mensajes de error deberían desaparecer a los 5 segundos', () => {
+    const DOM = document.createElement('div');
+    DOM.append(Register());
+    const btnRegister = DOM.querySelector('.btnRegister');
+    const errorEmail = DOM.querySelector('#errorEmail');
+    const errorPassword = DOM.querySelector('#errorPassword');
+    jest.useFakeTimers();
+    btnRegister.click();
+    jest.advanceTimersByTime(5000);
+    expect(errorEmail.style.visibility).toBe('hidden');
+    expect(errorPassword.style.visibility).toBe('hidden');
+    jest.useRealTimers();
+  });
+
+  it('Debería navegar a dashboard con click en botón', (done) => {
+    const navigateTo = jest.fn();
+    jest.spyOn(btnRegis, 'buttonRegister').mockImplementation(() => Promise.resolve({ nameUser: 'nombreee' }));
+    const DOM = document.createElement('div');
+    DOM.append(Register(navigateTo));
+    const btnRegister = DOM.querySelector('.btnRegister');
+    btnRegister.click();
+    expect(btnRegis.buttonRegister).toHaveBeenCalled();
+    setTimeout(() => {
+      expect(navigateTo).toHaveBeenCalledWith('/dashboard');
+      done();
+    }, 0);
   });
 
   it('Función de login con google, debería ser llamado con 2 argumentos', () => {
