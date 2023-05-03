@@ -4,8 +4,10 @@
 import * as FIREBASE from 'firebase/auth';
 import Dashboard from '../../src/pages/Dashboard.js';
 // import * as emailCutter from '../../src/pages/Dashboard.js';
-// import { savePostFire } from '../../src/lib/Posts.js';
+import * as savePostF from '../../src/lib/Posts.js';
+import { deletePost } from '../../src/lib/firebase.js';
 
+jest.mock('../../src/lib/firebase.js');
 jest.mock('firebase/auth');
 
 describe('Dashboard', () => {
@@ -23,7 +25,6 @@ describe('Dashboard', () => {
   });
   test('After click button signOut return call function navigateTo', (done) => {
     FIREBASE.signOut.mockImplementation(() => Promise.resolve());
-
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();
     DOM.append(Dashboard(navigateTo));
@@ -48,19 +49,54 @@ describe('Dashboard', () => {
     not.click();
     expect(myModal.style.display).toBe('none');
   });
-  /* test.skip('Should cut the user email to be shown as the username', () => {
-    emailCutter;
-  }); */
-  test('button de pub..', (done) => {
+  it.skip('botón de borrar, debería eliminar post con click', (done) => {
     const DOM = document.createElement('div');
     DOM.append(Dashboard());
-    const savePostFire = jest.fn();
+    // jest.spyOn(savePostF, 'savePostFire');
+    const btnsDelete = DOM.querySelectorAll('.btn-delete');
+    const myModal = DOM.querySelector('#myModal');
+    const yes = DOM.querySelector('#yes');
+    btnsDelete[0].click();
+    expect(myModal.style.display).toBe('block');
+    yes.click();
+    expect(deletePost).toHaveBeenCalledTimes(1);
+    done();
+  });
+  it('botón de postear, debería guardar post con click', (done) => {
+    const DOM = document.createElement('div');
+    DOM.append(Dashboard());
+    jest.spyOn(savePostF, 'savePostFire');
     const btnPost = DOM.querySelector('#button-post');
     const postText = DOM.querySelector('#post-text');
-    // const editStatus = true;
     btnPost.click();
-
-    expect(savePostFire).toHaveBeenCalledWith(postText);
+    expect(savePostF.savePostFire).toHaveBeenCalledWith(postText);
     done();
+  });
+  it('boton de postear debería avisar que se posteó con éxito', () => {
+    const DOM = document.createElement('div');
+    DOM.append(Dashboard());
+    const btnPost = DOM.querySelector('#button-post');
+    const msgPosT = DOM.querySelector('#msg-post');
+    msgPosT.style.display = 'block';
+    jest.useFakeTimers();
+    btnPost.click();
+    jest.advanceTimersByTime(2000);
+    expect(msgPosT.style.display).toBe('none');
+    jest.useRealTimers();
+  });
+  it('botón deberia editar al botón, textArea y mensaje ', () => {
+    const DOM = document.createElement('div');
+    DOM.append(Dashboard());
+    const btnPost = DOM.querySelector('#button-post');
+    const postText = DOM.querySelector('#post-text');
+    const msgPosT = DOM.querySelector('#msg-post');
+    jest.useFakeTimers();
+    btnPost.click();
+    expect(btnPost.innerHTML).toBe('Publicar');
+    expect(postText.value).toBe('');
+    expect(msgPosT.style.display).toBe('block');
+    jest.advanceTimersByTime(3000);
+    expect(msgPosT.style.display).toBe('none');
+    jest.useRealTimers();
   });
 });

@@ -77,6 +77,7 @@ const Dashboard = (navigateTo) => {
     const emailAt = emailName.search('@');
     emailCutted = emailName.slice(0, emailAt);
     userName.innerHTML = emailCutted;
+    return emailCutted;
   };
 
   onAuthStateChanged(auth, cutted);
