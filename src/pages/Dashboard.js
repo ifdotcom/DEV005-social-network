@@ -31,18 +31,13 @@ const Dashboard = (navigateTo) => {
     </div>
     <div id = "border-textArea">
       <textarea id="post-text" name="textarea" placeholder="Escribir publicación..."></textarea>
-      
     </div>
-    <div>
-    <input id="img-post" type="file" value="Subir Imágen >
-      </div>
     <div id = "msg-post">
       <span id="msg-post-text">Se ha compartido tu publicación</span>
     </div>
     <div id="container-btn">
       <button id="button-post" class="btn-post">Publicar</button>
     </div>
-
     <div id='containerPosts'>
       <div class="box-gradient">
         <div id="postPublic">
@@ -66,7 +61,6 @@ const Dashboard = (navigateTo) => {
   const userName = mainDashboard.querySelector('#userName');
   const buttonOut = mainDashboard.querySelector('#button-signOut');
   const postText = mainDashboard.querySelector('#post-text');
-  const postImg = mainDashboard.querySelector('#img-post');
   const msgPosT = mainDashboard.querySelector('#msg-post');
   const btnPost = mainDashboard.querySelector('#button-post');
   const containerPost = mainDashboard.querySelector('#containerPosts');
@@ -177,7 +171,6 @@ const Dashboard = (navigateTo) => {
     });
   });
   btnPost.addEventListener('click', () => {
-    console.log(postImg);
     if (!editStatus) {
       savePostFire(postText);
       msgPosT.style.display = 'block';
