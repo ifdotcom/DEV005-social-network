@@ -18,15 +18,24 @@ import {
 //   messagingSenderId: '611309449971',
 //   appId: '1:611309449971:web:52cdfd8a7f8dfccac87d86',
 // };
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyBpUAmyGv1olj6CsTJ6A8rZtCvK3XgzpXA',
+//   authDomain: 'myfirstproyect-bb58e.firebaseapp.com',
+//   projectId: 'myfirstproyect-bb58e',
+//   storageBucket: 'myfirstproyect-bb58e.appspot.com',
+//   messagingSenderId: '849896345504',
+//   appId: '1:849896345504:web:4482e1224f5e61429d5ec5',
+//   measurementId: 'G-5HVRKB5KL9',
+// };
 const firebaseConfig = {
-  apiKey: 'AIzaSyBpUAmyGv1olj6CsTJ6A8rZtCvK3XgzpXA',
-  authDomain: 'myfirstproyect-bb58e.firebaseapp.com',
-  projectId: 'myfirstproyect-bb58e',
-  storageBucket: 'myfirstproyect-bb58e.appspot.com',
-  messagingSenderId: '849896345504',
-  appId: '1:849896345504:web:4482e1224f5e61429d5ec5',
-  measurementId: 'G-5HVRKB5KL9',
+  apiKey: "AIzaSyAhTA8a9C8F5CoZGVaZqjPaVlFmIJKnmUk",
+  authDomain: "frikis-del-espacio-aa6ea.firebaseapp.com",
+  projectId: "frikis-del-espacio-aa6ea",
+  storageBucket: "frikis-del-espacio-aa6ea.appspot.com",
+  messagingSenderId: "420233466361",
+  appId: "1:420233466361:web:02c7d97249f47c31fded28",
 };
+
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
