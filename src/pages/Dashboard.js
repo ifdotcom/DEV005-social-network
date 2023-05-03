@@ -66,7 +66,7 @@ const Dashboard = (navigateTo) => {
   const userName = mainDashboard.querySelector('#userName');
   const buttonOut = mainDashboard.querySelector('#button-signOut');
   const postText = mainDashboard.querySelector('#post-text');
-  const postImg = mainDashboard.querySelector("#img-post");
+  const postImg = mainDashboard.querySelector('#img-post');
   const msgPosT = mainDashboard.querySelector('#msg-post');
   const btnPost = mainDashboard.querySelector('#button-post');
   const containerPost = mainDashboard.querySelector('#containerPosts');
