@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="760" height="120" src="/src/img/tituloRM.png">
+  <img width="550" height="120" src="/src/img/tituloRM.png">
 </p>
 
 ## Índice
@@ -37,16 +37,41 @@ También se trabajó en el responsive(celular, tablet, laptop y PC), debido al e
 
 ## 3. Historias de usuario
 
-...
+![Historias de Usuario](/src/img/HU.jpg 'Historias de Usuario')
 
 ## 4. Prototipos de diseño
 
-...
+* Prototipo de Baja Fidelidad:
+
+![Prototipo de Baja Fidelidad](/src/img/PrototypeBaja1.jpg 'Prototipo de baja Fidelidad')
+![Prototipo de Baja Fidelidad 2](/src/img/PrototypeBaja2.jpg 'Prototipo de baja Fidelidad')
+
+* Prototipo de Alta Fidelidad:
+
+![Prototipo de Alta Fidelidad](/src/img/PrototypeFigma.jpg 'Prototipo de Alta Fidelidad')
+Link ZEPLIN: https://scene.zeplin.io/project/645191aae943d126692f1a93
 
 ## 5. Test de usabilidad
+### UI
+**Inicialmente teníamos una composición de colores con transparencias que dificultaba la visualización de los elementos, se optó por:**
+- Cambiar el fondo. 
+- Agregar colores sólidos a los botones, definir colores primarios y secundarios.
+- Cambiar el color del footer.
+- Resaltar los textos blancos con sombreado para mayor legibilidad del usuario.
+- Resaltar los íconos con sombreado para mayor legibilidad del usuario.
+- Agregar espaciado entre líneas para fácil lectura.
+- Cambiar el tamaño de fuente del botón de Cerrar Sesión.
 
-...
-
+### UX
+**En la parte funcional, se optó por:**
+- Proteger las rutas.
+- Mandar un mensaje al usuario cuando haya publicado o editado su post.
+- Evitar que el usuario pueda borrar o editar posts ajenos.
+- Mostrar mensajes personalizados de Error sí los valores ingresados por el usuario, son incorrectos.
+- Mostrar un mensaje de confirmación al borrar un post.
+- Agregar la opción de desenmascarar/enmascarar la contraseña a decisión del usuario.
+- Ordenar los posts por fecha de creación. 
+- Mostrar mensaje de espera mientras se carga la Data.
 ## 6. Objetivos de aprendizaje
 
 ### HTML

@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard snapshot of Dashboard 1`] = `
+<div>
+  <div
+    class="main-dashboard"
+  >
+    
+    
+    <div
+      id="headerDashboard"
+    >
+      
+      
+      <h1
+        class="tittle-dashboard"
+      >
+        Frikis Del Espacio
+      </h1>
+      
+      
+      <article
+        id="LogOut"
+      >
+        
+        
+        <img
+          alt="Imagen  "
+          id="logoSignOut"
+          src="./img/vaca2.png"
+        />
+        
+        
+        <button
+          id="button-signOut"
+        >
+          Cerrar Sesión
+        </button>
+        
+      
+      </article>
+      
+    
+    </div>
+    
+    
+    <div
+      id="barDashboard"
+    />
+    
+    
+    
+    <div
+      id="profile"
+    >
+      
+    
+      <div
+        id="circleAlien"
+      >
+        
+      
+        <div
+          id="circleAlien2"
+        >
+          
+        
+          <img
+            alt="Imagen de Alien "
+            id="imgAlien"
+            src="./img/imgAlienDashboard.png"
+          />
+          
+      
+        </div>
+        
+    
+      </div>
+      
+    
+      <span
+        id="userName"
+      >
+         Gabriela79 
+      </span>
+      
+    
+    </div>
+    
+    
+    <div
+      id="border-textArea"
+    >
+      
+      
+      <textarea
+        id="post-text"
+        name="textarea"
+        placeholder="Escribir publicación..."
+      />
+      
+      
+    
+    </div>
+    
+    
+    <div>
+      
+    
+      <input
+        id="img-post"
+        msg-post"=""
+        type="file"
+        value="Subir Imágen >
+      </div>
+    <div id = "
+      />
+      
+      
+      <span
+        id="msg-post-text"
+      >
+        Se ha compartido tu publicación
+      </span>
+      
+    
+    </div>
+    
+    
+    <div
+      id="container-btn"
+    >
+      
+      
+      <button
+        class="btn-post"
+        id="button-post"
+      >
+        Publicar
+      </button>
+      
+    
+    </div>
+    
+
+    
+    <div
+      id="containerPosts"
+    >
+      
+      
+      <div
+        class="box-gradient"
+      >
+        
+        
+        <div
+          id="postPublic"
+        >
+          
+          
+          <span
+            class="loading"
+          >
+            Cargando...
+          </span>
+          
+          
+          <img
+            alt="Ovni girando"
+            id="ovniL"
+            src="./img/ovni.gif"
+          />
+          
+        
+        </div>
+        
+      
+      </div>
+          
+    
+    </div>
+    
+    
+    <div
+      class="modal"
+      id="myModal"
+    >
+      
+      
+      <div
+        class="modal-content"
+      >
+        
+        
+        <p>
+          ¿Estás seguro(a) de eliminar tu publicación?
+        </p>
+        
+        
+        <button
+          id="yes"
+        >
+          Sí
+        </button>
+        
+        
+        <button
+          id="not"
+        >
+          No
+        </button>
+        
+      
+      </div>
+      
+    
+    </div>
+    
+    
+  </div>
+</div>
+`;
