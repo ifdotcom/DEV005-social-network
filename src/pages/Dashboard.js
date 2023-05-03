@@ -71,12 +71,15 @@ const Dashboard = (navigateTo) => {
     myModal.style.display = 'none';
   });
   let emailCutted;
-  onAuthStateChanged(auth, (user) => {
+
+  const cutted = (user) => {
     const emailName = user.email;
     const emailAt = emailName.search('@');
     emailCutted = emailName.slice(0, emailAt);
     userName.innerHTML = emailCutted;
-  });
+  };
+
+  onAuthStateChanged(auth, cutted);
 
   // funcion para traer el usuario
   const userAuthor = (idAuthor) => {
