@@ -99,22 +99,13 @@ exports[`Dashboard snapshot of Dashboard 1`] = `
         placeholder="Escribir publicación..."
       />
       
-      
     
     </div>
     
     
-    <div>
-      
-    
-      <input
-        id="img-post"
-        msg-post"=""
-        type="file"
-        value="Subir Imágen >
-      </div>
-    <div id = "
-      />
+    <div
+      id="msg-post"
+    >
       
       
       <span
@@ -142,7 +133,6 @@ exports[`Dashboard snapshot of Dashboard 1`] = `
     
     </div>
     
-
     
     <div
       id="containerPosts"
