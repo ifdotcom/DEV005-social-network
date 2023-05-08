@@ -5,6 +5,16 @@ import Login from '../../src/pages/Login.js';
 import * as lgnGoogle from '../../src/lib/LoginGoogle.js';
 import * as btnLogin from '../../src/lib/LoginEmail.js';
 
+jest.mock('../../src/images.js', () => ({
+  cow: '',
+  catGitHub: '',
+  logoAlien: '',
+  alienMoon: '',
+  google: '',
+  cowTwo: '',
+  imgAlien: '',
+  errorImg: '',
+}));
 describe('Login', () => {
   it('Debería ser una función', () => {
     expect(typeof Login).toBe('function');

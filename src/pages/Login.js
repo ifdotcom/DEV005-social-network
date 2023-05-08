@@ -1,15 +1,14 @@
 import { buttonLoginG } from '../lib/LoginGoogle';
 import { buttonLogin } from '../lib/LoginEmail';
-import logo from '../img/vaca1_480.png';
-import google from '../img/google.png';
+import { cow, google } from '../images';
 
 const Login = (navigateTo) => {
   const viewLogin = `
     <h1 id="tittleLogo-2">Frikis del Espacio</h1>
-    <img id="logo-2" src= "${logo}" alt="Imagen del logo"/>  
+    <img id="logo-2" src= "${cow}" alt="Imagen del logo"/>  
       <div class="login-view">
         <div id="container-logo">
-          <img src="${logo}" alt="Imagen del Logo" id="logo" />
+          <img src="${cow}" alt="Imagen del Logo" id="logo" />
           <h1 class="tittle-login" id="title">Frikis Del Espacio</h1>
         </div>
         <div class="container-login">
@@ -85,7 +84,6 @@ const Login = (navigateTo) => {
     }
     buttonLogin(passwordValue, emailValue)
       .then((user) => {
-        console.log(user.nameUser);
         if (user.nameUser) {
           navigateTo('/dashboard');
         }

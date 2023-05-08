@@ -1,15 +1,14 @@
 import { buttonLoginG } from '../lib/LoginGoogle';
 import { buttonRegister } from '../lib/RegisterEmail';
-import logo from '../img/vaca1_480.png';
-import google from '../img/google.png';
+import { cow, google } from '../images';
 
 const Register = (navigateTo) => {
   const viewRegister = `
   <h1 id="tittleLogo-2">Frikis del Espacio</h1>
-  <img id="logo-2" src= "${logo}" alt="Imagen del logo"/>  
+  <img id="logo-2" src= "${cow}" alt="Imagen del logo"/>  
     <div class="register">
       <h1 class="tittleFrikis">Frikis Del Espacio</h1>
-      <img class="logoSmall" src="${logo}" alt="Vaca abducida por alien"/>
+      <img class="logoSmall" src="${cow}" alt="Vaca abducida por alien"/>
       <div class="container-register">
         <button class="btnG"><img src="${google}" alt="Ícono de google"/><span>Continúa con Google</span></button>
         <p class="or"><span class="line"></span><span>o</span><span class="line"></span></p>
@@ -75,9 +74,7 @@ const Register = (navigateTo) => {
     }
     buttonRegister(passwordValue, emailValue)
       .then((user) => {
-        console.log(user.nameUser);
         if (user.nameUser) {
-          console.log(user.nameUser);
           navigateTo('/dashboard');
         }
       })
